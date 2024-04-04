@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2759e085-233b-40ad-9865-7f4f8da77211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze">
+      <UniqueIdentifier>{0b7577ac-c610-4ec4-bd08-01a006353615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Input">
+      <UniqueIdentifier>{da40d965-0d17-4e52-9053-edae0bcce19d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Logging">
+      <UniqueIdentifier>{dea32dc2-da07-46e5-a702-d21bdffc50e7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Core.hpp">
+      <Filter>src\Blaze</Filter>
+    </ClCompile>
+    <ClCompile Include="Application.cpp">
+      <Filter>src\Blaze</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>src\Blaze\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>src\Blaze\Logging</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.hpp">
+      <Filter>src\Blaze</Filter>
+    </ClInclude>
+    <ClInclude Include="Blaze.hpp" />
+    <ClInclude Include="EntryPoint.hpp">
+      <Filter>src\Blaze</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.hpp">
+      <Filter>src\Blaze\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.hpp">
+      <Filter>src\Blaze\Logging</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
