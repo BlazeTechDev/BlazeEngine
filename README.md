@@ -1,1 +1,1 @@
-![alt text](https://github.com/BlazeTechDev/BlazeEngine/main/blaze_logo.svg)
+![alt text](https://github.com/BlazeTechDev/BlazeEngine/master/blaze_logo.svg)
