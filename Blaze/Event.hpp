@@ -43,6 +43,8 @@ namespace Blaze
 			return GetCategoryFlags() & category;
 		}
 
+		bool Handled = false;
+
 	protected:
 		bool m_Handled = false;
 	};

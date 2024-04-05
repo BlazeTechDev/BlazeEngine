@@ -30,6 +30,12 @@
     <ClCompile Include="WindowsWindow.cpp">
       <Filter>src\Blaze\Platform</Filter>
     </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerStack.cpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.hpp">
@@ -70,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="WindowsWindow.hpp">
       <Filter>src\Blaze\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerStack.hpp">
+      <Filter>src\Blaze\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
