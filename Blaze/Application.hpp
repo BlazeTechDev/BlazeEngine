@@ -2,6 +2,7 @@
 
 #include "Core.hpp"
 #include "Window.hpp"
+#include "WindowEvent.hpp"
 
 namespace Blaze
 {
@@ -13,7 +14,11 @@ namespace Blaze
 
 		void Run();
 
+		void OnEvent(Event& e);
+
 	private:
+		bool OnWindowClose(WindowClosedEvent& e);
+
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};

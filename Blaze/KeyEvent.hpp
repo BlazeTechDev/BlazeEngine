@@ -31,10 +31,6 @@ namespace Blaze
 			return ss.str();
 		}
 
-		static EventType GetStaticType() { return EventType::##type; }
-		virtual EventType GetEventType() const override { return GetStaticType(); }
-		virtual const char* GetName() const override { return #type; }
-
 		EVENT_CLASS_TYPE(KeyPressed)
 
 	private:

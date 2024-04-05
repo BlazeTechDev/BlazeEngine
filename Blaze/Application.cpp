@@ -1,20 +1,33 @@
+#include <GLFW/glfw3.h>
+
 #include "blzpch.hpp"
 
 #include "Application.hpp"
-
 #include "WindowEvent.hpp"
 #include "Log.hpp"
 
 namespace Blaze
 {
+
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
 	Application::Application()
 	{
 		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 
 	Application::~Application()
 	{
 
+	}
+
+	void Application::OnEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowClosedEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		BLZ_CORE_TRACE("{0}", e);
 	}
 
 	void Application::Run()
@@ -23,5 +36,11 @@ namespace Blaze
 		{
 			m_Window->OnUpdate();
 		}
+	}
+
+	bool Application::OnWindowClose(WindowClosedEvent& e)
+	{
+		m_Running = false;
+		return true;
 	}
 }

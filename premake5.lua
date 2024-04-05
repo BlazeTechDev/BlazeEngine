@@ -1,6 +1,7 @@
 workspace "Blaze"
     architecture "x64"
     configurations { "Debug", "Release", "Dist" }
+    startproject "Enferno"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -55,20 +56,23 @@ project "Blaze"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Enferno")
+            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Enferno/")
         }
     
     filter "configurations:Debug"
         defines "BLZ_DEBUG"
         symbols "On"
+        buildoptions "/MDd"
     
     filter "configurations:Release"
         defines "BLZ_RELEASE"
         optimize "On"
+        buildoptions "/MD"
     
     filter "configurations:Dist"
         defines "BLZ_DIST"
         optimize "On"
+        buildoptions "/MD"
 
 project "Enferno"
     location "Enferno"
