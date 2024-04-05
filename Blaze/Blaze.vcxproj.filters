@@ -14,40 +14,4 @@
       <UniqueIdentifier>{04f7c505-6db3-4f61-919f-e588f84e9bd1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Log.cpp">
-      <Filter>src\Blaze\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Application.cpp">
-      <Filter>src\Blaze\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="ApplicationEvent.hpp">
-      <Filter>src\Blaze\Events</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Blaze.hpp" />
-    <ClInclude Include="Log.hpp">
-      <Filter>src\Blaze\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Application.hpp">
-      <Filter>src\Blaze\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="EntryPoint.hpp">
-      <Filter>src\Blaze\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core.hpp" />
-    <ClInclude Include="Event.hpp">
-      <Filter>src\Blaze\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyEvent.hpp">
-      <Filter>src\Blaze\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseEvent.hpp">
-      <Filter>src\Blaze\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowEvent.hpp">
-      <Filter>src\Blaze\Events</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

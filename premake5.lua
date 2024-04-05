@@ -4,6 +4,12 @@ workspace "Blaze"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
+
+include "Blaze/vendor/GLFW"
+
 project "Blaze"
     location "Blaze"
     kind "SharedLib"
@@ -11,6 +17,9 @@ project "Blaze"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "blzpch.hpp"
+    pchsource "Blaze/blzpch.cpp"
 
     files
     {
@@ -20,8 +29,14 @@ project "Blaze"
 
     includedirs
     {
-        "Blaze"
-        "Blaze/vendor/spdlog/include"
+        "Blaze/vendor/spdlog/include",
+        "${IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
