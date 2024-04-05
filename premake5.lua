@@ -29,8 +29,9 @@ project "Blaze"
 
     includedirs
     {
+        "Blaze",
         "Blaze/vendor/spdlog/include",
-        "${IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}"
     }
 
     links
@@ -48,6 +49,7 @@ project "Blaze"
         {
             "BLZ_PLATFORM_WINDOWS",
             "BLZ_BUILD_DLL",
+            "BLZ_ENABLE_ASSERTIONS",
             "_WINDLL"
         }
 

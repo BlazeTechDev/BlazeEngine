@@ -7,11 +7,69 @@
     <Filter Include="src\Blaze">
       <UniqueIdentifier>{0b7577ac-c610-4ec4-bd08-01a006353615}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Blaze\Core">
-      <UniqueIdentifier>{10234563-946c-468b-ba32-f45bc85b59e5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Blaze\Events">
       <UniqueIdentifier>{04f7c505-6db3-4f61-919f-e588f84e9bd1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Blaze\Core">
+      <UniqueIdentifier>{10234563-946c-468b-ba32-f45bc85b59e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Platform">
+      <UniqueIdentifier>{4445739c-07d2-4a9a-9cb1-49d07a7df342}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="blzpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsWindow.cpp">
+      <Filter>src\Blaze\Platform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EntryPoint.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ApplicationEvent.hpp">
+      <Filter>src\Blaze\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.hpp">
+      <Filter>src\Blaze\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEvent.hpp">
+      <Filter>src\Blaze\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseEvent.hpp">
+      <Filter>src\Blaze\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowEvent.hpp">
+      <Filter>src\Blaze\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Blaze.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="blzpch.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsWindow.hpp">
+      <Filter>src\Blaze\Platform</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
