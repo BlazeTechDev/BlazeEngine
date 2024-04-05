@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Blaze", "Blaze\Blaze.vcxproj", "{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Enferno", "Enferno\Enferno.vcxproj", "{D28B38CB-3E6B-B766-4783-423DB3E11DC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Dist|x64 = Dist|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Debug|x64.ActiveCfg = Debug|x64
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Debug|x64.Build.0 = Debug|x64
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Dist|x64.ActiveCfg = Dist|x64
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Dist|x64.Build.0 = Dist|x64
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Release|x64.ActiveCfg = Release|x64
+		{1337E60C-7F4B-0EBE-48CD-B11DB4A00AEF}.Release|x64.Build.0 = Release|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Debug|x64.ActiveCfg = Debug|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Debug|x64.Build.0 = Debug|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Dist|x64.ActiveCfg = Dist|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Dist|x64.Build.0 = Dist|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Release|x64.ActiveCfg = Release|x64
+		{D28B38CB-3E6B-B766-4783-423DB3E11DC8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

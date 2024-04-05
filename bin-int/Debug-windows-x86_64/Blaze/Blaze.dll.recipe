@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\teschnerm\Source\Repos\BlazeTechDev\BlazeEngine\bin\Debug-x64\Blaze\Blaze.dll</FullPath>
+      <FullPath>C:\Dev\blaze\BlazeEngine\bin\Debug-windows-x86_64\Blaze\Blaze.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

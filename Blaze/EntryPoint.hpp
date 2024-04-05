@@ -7,8 +7,8 @@ extern Blaze::Application* Blaze::CreateApplication();
 int main(int argc, char** argv)
 {
 	Blaze::Log::Init();
-	Blaze::Log::GetCoreLogger()->warn("Initiated Core Log!");
-	Blaze::Log::GetClientLogger()->info("Initiated Client Log!");
+	BLZ_CORE_INFO("initialized core logger");
+	BLZ_CLIENT_INFO("initialized client logger");
 
 	auto app = Blaze::CreateApplication();
 	app->Run();

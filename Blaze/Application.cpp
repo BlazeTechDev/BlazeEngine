@@ -2,6 +2,9 @@
 
 #include "Application.hpp"
 
+#include "WindowEvent.hpp"
+#include "Log.hpp"
+
 namespace Blaze
 {
 	Application::Application()
@@ -16,9 +19,6 @@ namespace Blaze
 
 	void Application::Run()
 	{
-		while (true)
-		{
-			
-		}
+		while (true);
 	}
 }
