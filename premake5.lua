@@ -9,11 +9,9 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
-IncludeDir["ImGui"] = "Blaze/vendor/imgui/include"
 
 include "Blaze/vendor/GLFW"
 include "Blaze/vendor/Glad"
-include "Blaze/vendor/imgui"
 
 project "Blaze"
     location "Blaze"
@@ -37,15 +35,13 @@ project "Blaze"
         "Blaze",
         "Blaze/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
         "Glad",
-        "ImGui",
         "opengl32.lib"
     }
 
