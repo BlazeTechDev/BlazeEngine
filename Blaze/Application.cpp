@@ -6,6 +6,8 @@
 #include "WindowEvent.hpp"
 #include "Log.hpp"
 
+#include <glad/glad.h>
+
 namespace Blaze
 {
 

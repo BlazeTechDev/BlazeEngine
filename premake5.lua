@@ -8,8 +8,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
+IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
 
 include "Blaze/vendor/GLFW"
+include "Blaze/vendor/Glad"
 
 project "Blaze"
     location "Blaze"
@@ -32,12 +34,14 @@ project "Blaze"
     {
         "Blaze",
         "Blaze/vendor/spdlog/include",
-        "%{IncludeDir.GLFW}"
+        "%{IncludeDir.GLFW}",
+        "%{IncludeDir.Glad}"
     }
 
     links
     {
         "GLFW",
+        "Glad",
         "opengl32.lib"
     }
 
@@ -51,6 +55,7 @@ project "Blaze"
             "BLZ_PLATFORM_WINDOWS",
             "BLZ_BUILD_DLL",
             "BLZ_ENABLE_ASSERTIONS",
+            "GLFW_INCLUDE_NONE",
             "_WINDLL"
         }
 
