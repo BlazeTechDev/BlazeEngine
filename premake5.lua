@@ -9,9 +9,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
+IncludeDir["ImGui"] = "vendor/ImGui/include"
 
 include "Blaze/vendor/GLFW"
 include "Blaze/vendor/Glad"
+include "vendor/ImGui"
 
 project "Blaze"
     location "Blaze"
@@ -35,13 +37,15 @@ project "Blaze"
         "Blaze",
         "Blaze/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
-        "%{IncludeDir.Glad}"
+        "%{IncludeDir.Glad}",
+        "%{IncludeDir.ImGui}"
     }
 
     links
     {
         "GLFW",
         "Glad",
+        "ImGui",
         "opengl32.lib"
     }
 
@@ -63,7 +67,7 @@ project "Blaze"
         {
             ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Enferno/")
         }
-    
+
     filter "configurations:Debug"
         defines "BLZ_DEBUG"
         symbols "On"
