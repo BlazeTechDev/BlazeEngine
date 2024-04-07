@@ -10,6 +10,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
 IncludeDir["ImGui"] = "vendor/ImGui"
+IncludeDir["glm"] = "vendor/glm/glm"
 
 include "Blaze/vendor/GLFW"
 include "Blaze/vendor/Glad"
@@ -38,7 +39,8 @@ project "Blaze"
         "Blaze/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -107,7 +109,8 @@ project "Enferno"
     {
         "Blaze/vendor/spdlog/include",
         "Blaze",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
