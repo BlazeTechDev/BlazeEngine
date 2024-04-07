@@ -22,6 +22,7 @@ public:
 	Editor()
 	{
 		PushLayer(new EditorLayer());
+		PushOverlay(new Blaze::ImGuiLayer());
 	}
 
 	~Editor()

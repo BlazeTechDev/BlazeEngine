@@ -9,7 +9,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
-IncludeDir["ImGui"] = "vendor/ImGui/include"
+IncludeDir["ImGui"] = "vendor/ImGui"
 
 include "Blaze/vendor/GLFW"
 include "Blaze/vendor/Glad"
@@ -106,7 +106,8 @@ project "Enferno"
     includedirs
     {
         "Blaze/vendor/spdlog/include",
-        "Blaze"
+        "Blaze",
+        "%{IncludeDir.ImGui}"
     }
 
     links

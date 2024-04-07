@@ -3835,19 +3835,21 @@ void ImGui::SetActiveID(ImGuiID id, ImGuiWindow* window)
 {
     ImGuiContext& g = *GImGui;
 
-
-    for (int i = 0; i < window->DC.Layouts.Data.Size; i++)
+    if (window != nullptr)
     {
-        ImGuiLayout* layout = (ImGuiLayout*)window->DC.Layouts.Data[i].val_p;
-        IM_DELETE(layout);
-    }
-    // While most behaved code would make an effort to not steal active id during window move/drag operations,
-    // we at least need to be resilient to it. Cancelling the move is rather aggressive and users of 'master' branch
-    // may prefer the weird ill-defined half working situation ('docking' did assert), so may need to rework that.
-    if (g.MovingWindow != NULL && g.ActiveId == g.MovingWindow->MoveId)
-    {
-        IMGUI_DEBUG_LOG_ACTIVEID("SetActiveID() cancel MovingWindow\n");
-        g.MovingWindow = NULL;
+        for (int i = 0; i < window->DC.Layouts.Data.Size; i++)
+        {
+            ImGuiLayout* layout = (ImGuiLayout*)window->DC.Layouts.Data[i].val_p;
+            IM_DELETE(layout);
+        }
+        // While most behaved code would make an effort to not steal active id during window move/drag operations,
+        // we at least need to be resilient to it. Cancelling the move is rather aggressive and users of 'master' branch
+        // may prefer the weird ill-defined half working situation ('docking' did assert), so may need to rework that.
+        if (g.MovingWindow != NULL && g.ActiveId == g.MovingWindow->MoveId)
+        {
+            IMGUI_DEBUG_LOG_ACTIVEID("SetActiveID() cancel MovingWindow\n");
+            g.MovingWindow = NULL;
+        }
     }
 
     // Set active id

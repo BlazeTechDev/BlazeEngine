@@ -5,18 +5,21 @@
 #include "Application.hpp"
 #include "WindowEvent.hpp"
 #include "Log.hpp"
+#include "Core.hpp"
 
 #include <glad/glad.h>
 
 namespace Blaze
 {
-
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
 	{
+		BLZ_CORE_ASSERT(!s_Instance, "application already exists");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+		m_Window->SetEventCallback(BLZ_BIND_EVENT_FN(Application::OnEvent));
 	}
 
 	Application::~Application()
@@ -27,17 +30,19 @@ namespace Blaze
 	void Application::PushLayer(Layer* layer)
 	{
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* overlay)
 	{
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowClosedEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowClosedEvent>(BLZ_BIND_EVENT_FN(Application::OnWindowClose));
 
 		BLZ_CORE_TRACE("{0}", e);
 

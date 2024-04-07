@@ -3,6 +3,7 @@
 // only use this file for the client app, never the engine
 
 #include "blzpch.hpp"
+#include "ImGuiLayer.hpp"
 #include "Layer.hpp"
 #include "LayerStack.hpp"
 #include "Log.hpp"

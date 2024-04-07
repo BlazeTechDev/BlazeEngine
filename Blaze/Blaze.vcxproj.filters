@@ -49,6 +49,12 @@
     <ClInclude Include="Graphics.hpp">
       <Filter>src\Blaze\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="ImGuiLayer.hpp">
+      <Filter>src\Blaze\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_glfw.h">
+      <Filter>src\Blaze\ImGui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -69,6 +75,12 @@
     <ClCompile Include="WindowsWindow.cpp">
       <Filter>src\Blaze\Platform</Filter>
     </ClCompile>
+    <ClCompile Include="ImGuiLayer.cpp">
+      <Filter>src\Blaze\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_glfw.cpp">
+      <Filter>src\Blaze\ImGui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -88,6 +100,9 @@
     </Filter>
     <Filter Include="src\Blaze\Platform">
       <UniqueIdentifier>{e5a62e17-28d0-4bb6-9a05-6a39846dcebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\ImGui">
+      <UniqueIdentifier>{a9495921-394e-43fe-a3af-f5580eb302f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
