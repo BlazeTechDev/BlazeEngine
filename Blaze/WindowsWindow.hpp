@@ -21,7 +21,7 @@ namespace Blaze
 		void SetVSync(bool enabled);
 		bool IsVSync() const;
 
-		inline virtual void* GetNativeWindow() const { return m_Window; }
+		GLFWwindow* m_Window;
 
 	private:
 		virtual void Init(const WindowProps& props);
@@ -35,8 +35,6 @@ namespace Blaze
 
 			EventCallbackFn EventCallback;
 		};
-
-		GLFWwindow* m_Window;
 
 		WindowData m_Data;
 	};

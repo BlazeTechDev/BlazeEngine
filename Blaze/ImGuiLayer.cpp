@@ -153,8 +153,8 @@ namespace Blaze
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
 
 		ImGui_ImplOpenGL3_Init("#version 410");
-        WindowsWindow& window = static_cast<WindowsWindow&>(Application::Get().GetWindow());
-        ImGui_ImplGlfw_InitForOpenGL(static_cast<GLFWwindow*>(window.GetNativeWindow()), true);
+        WindowsWindow& window = (WindowsWindow&)Application::Get().GetWindow();
+        ImGui_ImplGlfw_InitForOpenGL(window.m_Window, true);
 	}
 
 	void ImGuiLayer::OnDetach()
