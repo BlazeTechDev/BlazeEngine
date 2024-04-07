@@ -164,6 +164,8 @@
     <ClInclude Include="Graphics.hpp" />
     <ClInclude Include="ImGuiLayer.hpp" />
     <ClInclude Include="imgui_impl_glfw.h" />
+    <ClInclude Include="Input.hpp" />
+    <ClInclude Include="InputCodes.hpp" />
     <ClInclude Include="KeyEvent.hpp" />
     <ClInclude Include="Layer.hpp" />
     <ClInclude Include="LayerStack.hpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="MouseEvent.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowEvent.hpp" />
+    <ClInclude Include="WindowsInput.hpp" />
     <ClInclude Include="WindowsWindow.hpp" />
     <ClInclude Include="blzpch.hpp" />
   </ItemGroup>
@@ -181,6 +184,7 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LayerStack.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="WIndowsInput.cpp" />
     <ClCompile Include="WindowsWindow.cpp" />
     <ClCompile Include="blzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

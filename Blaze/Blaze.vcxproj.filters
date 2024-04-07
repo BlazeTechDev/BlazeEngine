@@ -55,6 +55,15 @@
     <ClInclude Include="imgui_impl_glfw.h">
       <Filter>src\Blaze\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="Input.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowsInput.hpp">
+      <Filter>src\Blaze\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="InputCodes.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -80,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>src\Blaze\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="WIndowsInput.cpp">
+      <Filter>src\Blaze\Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
