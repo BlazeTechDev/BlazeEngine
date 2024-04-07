@@ -13,7 +13,10 @@
 
 namespace Blaze
 {
-	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") {}
+	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer") 
+    {
+        m_EditorWindowsInsert = m_EditorWindows.begin();
+    }
 	ImGuiLayer::~ImGuiLayer() {};
 
     ImGuiKey ImGuiLayer::GLFWKeyToImGuiKey(int key)
@@ -159,7 +162,10 @@ namespace Blaze
 
 	void ImGuiLayer::OnDetach()
 	{
-        
+        for (EditorWindow* editorWindow : m_EditorWindows)
+        {
+            delete editorWindow;
+        }
 	}
 
 	void ImGuiLayer::OnUpdate()
@@ -169,15 +175,29 @@ namespace Blaze
 		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+        
+        ImVec2 workCenter = ImGui::GetMainViewport()->GetWorkCenter();
+        ImVec2 size{ (float)Application::Get().GetWindow().GetWidth(), (float)Application::Get().GetWindow().GetHeight()};
+        ImVec2 pos{ workCenter.x - size.x * 0.5f, workCenter.y - size.y * 0.5f };
 
 		ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-        DrawWindows();
+        static bool open_window = true;
+        if (ImGui::Begin("Dockspace", &open_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize))
+        {
+            ImGui::DockSpace(ImGui::GetID("Dockspace"), size);
+            ImGui::SetWindowSize(size);
+            ImGui::SetWindowPos(pos);
 
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+            DrawWindows();
+
+            static bool show = true;
+            ImGui::ShowDemoWindow(&show);
+        }
+
+        ImGui::End();
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -193,7 +213,10 @@ namespace Blaze
 
     void ImGuiLayer::DrawWindows()
     {
-
+        for (EditorWindow* editorWindow : m_EditorWindows)
+        {
+            editorWindow->Draw();
+        }
     }
 
 	void ImGuiLayer::OnEvent(Event& event)
@@ -201,6 +224,21 @@ namespace Blaze
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowResizedEvent>(BLZ_BIND_EVENT_FN(ImGuiLayer::OnWindowResizedEvent));
 	}
+
+    void ImGuiLayer::PushEditorWindow(EditorWindow* editorWindow)
+    {
+        m_EditorWindowsInsert = m_EditorWindows.emplace(m_EditorWindowsInsert, editorWindow);
+    }
+
+    void ImGuiLayer::PopEditorWindow(EditorWindow* editorWindow)
+    {
+        auto it = std::find(m_EditorWindows.begin(), m_EditorWindows.end(), editorWindow);
+        if (it != m_EditorWindows.end())
+        {
+            m_EditorWindows.erase(it);
+            m_EditorWindowsInsert--;
+        }
+    }
 
 	bool ImGuiLayer::OnWindowResizedEvent(WindowResizedEvent& e)
 	{

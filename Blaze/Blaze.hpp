@@ -4,6 +4,7 @@
 
 #include "blzpch.hpp"
 #include "ImGuiLayer.hpp"
+#include "ConsoleWindow.hpp"
 #include "Layer.hpp"
 #include "LayerStack.hpp"
 #include "Log.hpp"

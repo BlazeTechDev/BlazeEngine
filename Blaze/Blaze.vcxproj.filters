@@ -58,6 +58,9 @@
     <ClInclude Include="OpenGLImpl.hpp">
       <Filter>src\Blaze\Graphics\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="ConsoleWindow.hpp">
+      <Filter>src\Blaze\ImGui\EditorWindows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -90,6 +93,9 @@
     <ClCompile Include="OpenGLImpl.cpp">
       <Filter>src\Blaze\Graphics\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleWindow.cpp">
+      <Filter>src\Blaze\ImGui\EditorWindows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -115,6 +121,9 @@
     </Filter>
     <Filter Include="src\Blaze\Graphics\OpenGL">
       <UniqueIdentifier>{b8efbf5f-d79d-49a2-8446-49fc94d02660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\ImGui\EditorWindows">
+      <UniqueIdentifier>{d2d59887-6c49-45fe-a6e8-6d16ef5f7e22}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
