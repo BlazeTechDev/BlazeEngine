@@ -79,7 +79,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -103,7 +103,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -131,7 +131,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -159,6 +159,7 @@
     <ClInclude Include="ApplicationEvent.hpp" />
     <ClInclude Include="Blaze.hpp" />
     <ClInclude Include="Core.hpp" />
+    <ClInclude Include="EditorWindow.hpp" />
     <ClInclude Include="EntryPoint.hpp" />
     <ClInclude Include="Event.hpp" />
     <ClInclude Include="Graphics.hpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="LayerStack.hpp" />
     <ClInclude Include="Log.hpp" />
     <ClInclude Include="MouseEvent.hpp" />
+    <ClInclude Include="OpenGLImpl.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowEvent.hpp" />
     <ClInclude Include="WindowsWindow.hpp" />
@@ -175,10 +177,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImGuiLayer.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="LayerStack.cpp" />
     <ClCompile Include="Log.cpp" />
+    <ClCompile Include="OpenGLImpl.cpp" />
     <ClCompile Include="WindowsWindow.cpp" />
     <ClCompile Include="blzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

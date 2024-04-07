@@ -59,6 +59,7 @@ project "Blaze"
         defines
         {
             "BLZ_PLATFORM_WINDOWS",
+            "BLZ_OPENGL_GRAPHICS",
             "BLZ_BUILD_DLL",
             "BLZ_ENABLE_ASSERTIONS",
             "GLFW_INCLUDE_NONE",

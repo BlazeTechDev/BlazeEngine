@@ -52,8 +52,11 @@
     <ClInclude Include="ImGuiLayer.hpp">
       <Filter>src\Blaze\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="imgui_impl_glfw.h">
+    <ClInclude Include="EditorWindow.hpp">
       <Filter>src\Blaze\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLImpl.hpp">
+      <Filter>src\Blaze\Graphics\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +84,12 @@
     <ClCompile Include="imgui_impl_glfw.cpp">
       <Filter>src\Blaze\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>src\Blaze\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLImpl.cpp">
+      <Filter>src\Blaze\Graphics\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -103,6 +112,9 @@
     </Filter>
     <Filter Include="src\Blaze\ImGui">
       <UniqueIdentifier>{a9495921-394e-43fe-a3af-f5580eb302f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Graphics\OpenGL">
+      <UniqueIdentifier>{b8efbf5f-d79d-49a2-8446-49fc94d02660}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
