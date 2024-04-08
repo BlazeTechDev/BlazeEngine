@@ -245,6 +245,10 @@ namespace Blaze
 
     void ImGuiLayer::LoadImGuiStyles()
     {
+        ImFontConfig fontConfig;
+        fontConfig.SizePixels = 13 * 1.2f;
+        ImGui::GetIO().Fonts->AddFontDefault(&fontConfig);
+
         ImGuiStyle& style = ImGui::GetStyle();
         
         style.Colors[ImGuiCol_WindowBg] = ImVec4(0.16f, 0.16f, 0.16f, 1);
@@ -274,6 +278,8 @@ namespace Blaze
         style.Colors[ImGuiCol_TabHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1);
         style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1);
         style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_NavHighlight] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_DockingPreview] = ImVec4(0.94f, 0.24f, 0.24f, 1);
 
         style.ChildRounding = 3;
         style.FrameRounding = 3;
