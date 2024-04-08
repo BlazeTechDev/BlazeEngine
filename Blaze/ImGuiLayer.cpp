@@ -146,7 +146,8 @@ namespace Blaze
 	void ImGuiLayer::OnAttach()
 	{
 		ImGui::CreateContext();
-		ImGui::StyleColorsDark();
+
+        LoadImGuiStyles();
 
 		ImGuiIO& io = ImGui::GetIO();
 		io.BackendFlags |= ImGuiBackendFlags_HasMouseCursors;
@@ -175,29 +176,31 @@ namespace Blaze
 		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
         glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
-        
-        ImVec2 workCenter = ImGui::GetMainViewport()->GetWorkCenter();
-        ImVec2 size{ (float)Application::Get().GetWindow().GetWidth(), (float)Application::Get().GetWindow().GetHeight()};
-        ImVec2 pos{ workCenter.x - size.x * 0.5f, workCenter.y - size.y * 0.5f };
 
 		ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
+	
+        ImGui::NewFrame();
+
+        ImVec2 workCenter = ImGui::GetMainViewport()->GetWorkCenter();
+        ImVec2 size{ (float)Application::Get().GetWindow().GetWidth(), (float)Application::Get().GetWindow().GetHeight() };
+        ImVec2 pos{ workCenter.x - size.x * 0.5f, workCenter.y - size.y * 0.5f };
+
+
+        ImGui::SetNextWindowPos(pos);
+        ImGui::SetNextWindowSize(size);
+        ImGui::SetNextWindowViewport(ImGui::GetMainViewport()->ID);
 
         static bool open_window = true;
-        if (ImGui::Begin("Dockspace", &open_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize))
-        {
-            ImGui::DockSpace(ImGui::GetID("Dockspace"), size);
-            ImGui::SetWindowSize(size);
-            ImGui::SetWindowPos(pos);
-
-            DrawWindows();
-
-            static bool show = true;
-            ImGui::ShowDemoWindow(&show);
-        }
+        ImGui::Begin("Dockspace", &open_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+        ImGui::DockSpace(ImGui::GetID("Dockspace"), ImVec2(0,0), ImGuiDockNodeFlags_PassthruCentralNode);
 
         ImGui::End();
+
+        DrawWindows();
+
+        static bool show = true;
+        ImGui::ShowDemoWindow(&show);
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -238,6 +241,49 @@ namespace Blaze
             m_EditorWindows.erase(it);
             m_EditorWindowsInsert--;
         }
+    }
+
+    void ImGuiLayer::LoadImGuiStyles()
+    {
+        ImGuiStyle& style = ImGui::GetStyle();
+        
+        style.Colors[ImGuiCol_WindowBg] = ImVec4(0.16f, 0.16f, 0.16f, 1);
+        style.Colors[ImGuiCol_TitleBgActive] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_TitleBg] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_Border] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_Separator] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_SeparatorHovered] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_SeparatorActive] = ImVec4(1, 0.33f, 0.33f, 1);
+        style.Colors[ImGuiCol_FrameBg] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.39f, 0.39f, 0.39f, 1);
+        style.Colors[ImGuiCol_FrameBgActive] = ImVec4(0.06f, 0.06f, 0.06f, 1);
+        style.Colors[ImGuiCol_Header] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_Button] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.10f, 0.10f, 0.10f, 1);
+        style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.17f, 0.17f, 0.17f, 1);
+        style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.11f, 0.11f, 0.11f, 1);
+        style.Colors[ImGuiCol_CheckMark] = ImVec4(0.9f, 0.9f, 0.9f, 255);
+        style.Colors[ImGuiCol_ResizeGrip] = ImVec4(0.11f, 0.11f, 0.11f, 255);
+        style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.94f, 0.24f, 0.24f, 255);
+        style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(1, 0.33f, 0.33f, 255);
+        style.Colors[ImGuiCol_Tab] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_TabActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_TabHovered] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);
+
+        style.ChildRounding = 3;
+        style.FrameRounding = 3;
+        style.GrabRounding = 3;
+        style.PopupRounding = 3;
+        style.PopupRounding = 3;
+        style.TabRounding = 3;
+        style.WindowRounding = 3;
+
+        style.WindowPadding = ImVec2(3, 3);
     }
 
 	bool ImGuiLayer::OnWindowResizedEvent(WindowResizedEvent& e)

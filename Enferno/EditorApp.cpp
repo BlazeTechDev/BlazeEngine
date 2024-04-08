@@ -8,16 +8,17 @@ public:
 	void OnAttach() override
 	{
 		s_ImGuiLayer->PushEditorWindow(new Blaze::ConsoleWindow());
+		s_ImGuiLayer->PushEditorWindow(new Blaze::SceneViewport());
 	}
 
 	void OnUpdate() override
 	{
-		BLZ_CLIENT_INFO("EditorLayer:Update");
+
 	}
 	
 	void OnEvent(Blaze::Event& event) override
 	{
-		BLZ_CLIENT_TRACE("{0}", event);
+
 	}
 
 private:

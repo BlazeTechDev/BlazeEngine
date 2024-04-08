@@ -27,6 +27,8 @@ namespace Blaze
 		void PushEditorWindow(EditorWindow* editorWindow);
 		void PopEditorWindow(EditorWindow* editorWindow);
 
+		void LoadImGuiStyles();
+
 		void DrawWindows();
 
 	private:

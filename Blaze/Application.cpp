@@ -44,8 +44,6 @@ namespace Blaze
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowClosedEvent>(BLZ_BIND_EVENT_FN(Application::OnWindowClose));
 
-		BLZ_CORE_TRACE("{0}", e);
-
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
 			(*--it)->OnEvent(e);

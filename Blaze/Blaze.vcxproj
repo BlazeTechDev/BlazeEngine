@@ -171,6 +171,7 @@
     <ClInclude Include="Log.hpp" />
     <ClInclude Include="MouseEvent.hpp" />
     <ClInclude Include="OpenGLImpl.hpp" />
+    <ClInclude Include="SceneViewport.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowEvent.hpp" />
     <ClInclude Include="WindowsWindow.hpp" />
@@ -185,6 +186,7 @@
     <ClCompile Include="LayerStack.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="OpenGLImpl.cpp" />
+    <ClCompile Include="SceneViewport.cpp" />
     <ClCompile Include="WindowsWindow.cpp" />
     <ClCompile Include="blzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
