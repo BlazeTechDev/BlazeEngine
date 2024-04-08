@@ -14,4 +14,5 @@ to build the engine:
 - clone the source using:
   - `git clone --recursive https://github.com/BlazeTechDev/BlazeEngine.git`
 - build the Visual Studio 2022 project by running the `generate_projects.bat` file
+  - this build process if highly untested and may require manually editing the linker and include files in Visual Studio or the premake5.lue file
 - open the Visual Studio solution and press f5
