@@ -276,6 +276,12 @@ namespace Blaze
         style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);
         style.Colors[ImGuiCol_NavHighlight] = ImVec4(0.94f, 0.24f, 0.24f, 1);
         style.Colors[ImGuiCol_DockingPreview] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_PlotHistogram] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(1, 0.15f, 0.15f, 1);
+        style.Colors[ImGuiCol_PlotLines] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_PlotLinesHovered] = ImVec4(1, 0.15f, 0.15f, 1);
+
+
 
         style.ChildRounding = 3;
         style.FrameRounding = 1;
