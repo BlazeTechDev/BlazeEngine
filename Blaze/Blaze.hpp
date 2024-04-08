@@ -7,6 +7,7 @@
 
 #include "ConsoleWindow.hpp"
 #include "SceneViewport.hpp"
+#include "PropertiesWindow.hpp"
 
 #include "Layer.hpp"
 #include "LayerStack.hpp"

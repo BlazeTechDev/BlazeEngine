@@ -64,6 +64,9 @@
     <ClInclude Include="SceneViewport.hpp">
       <Filter>src\Blaze\ImGui\EditorWindows</Filter>
     </ClInclude>
+    <ClInclude Include="PropertiesWindow.hpp">
+      <Filter>src\Blaze\ImGui\EditorWindows</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -100,6 +103,9 @@
       <Filter>src\Blaze\ImGui\EditorWindows</Filter>
     </ClCompile>
     <ClCompile Include="SceneViewport.cpp">
+      <Filter>src\Blaze\ImGui\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="PropertiesWindow.cpp">
       <Filter>src\Blaze\ImGui\EditorWindows</Filter>
     </ClCompile>
   </ItemGroup>

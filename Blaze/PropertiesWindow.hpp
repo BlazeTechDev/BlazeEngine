@@ -5,7 +5,7 @@
 
 namespace Blaze
 {
-	class BLAZE_API ConsoleWindow : public EditorWindow
+	class BLAZE_API PropertiesWindow : public EditorWindow
 	{
 	public:
 		inline void Update() override;
