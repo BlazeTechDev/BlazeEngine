@@ -9,10 +9,10 @@ Blaze Engine is an engine designed to be as lightweight as possible with minimal
 > [!WARNING]
 > Blaze Engine currently only supports windows (sorry linux and mac) and runs on MSVC for Visual Studio 2022, other versions of Visual Studio have not been tested
 
-# Building the Engine
+# Building Blaze Engine from source
 to build the engine:
 - clone the source using:
   - `git clone --recursive https://github.com/BlazeTechDev/BlazeEngine.git`
 - build the Visual Studio 2022 project by running the `generate_projects.bat` file
   - this build process if highly untested and may require manually editing the linker and include files in Visual Studio or the premake5.lue file
-- open the Visual Studio solution and press f5
+- open the Visual Studio solution, build the solution, and run!
