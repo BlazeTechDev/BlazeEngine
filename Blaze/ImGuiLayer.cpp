@@ -270,7 +270,7 @@ namespace Blaze
         style.Colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.94f, 0.24f, 0.24f, 255);
         style.Colors[ImGuiCol_ResizeGripActive] = ImVec4(1, 0.33f, 0.33f, 255);
         style.Colors[ImGuiCol_Tab] = ImVec4(0.15f, 0.15f, 0.15f, 1);
-        style.Colors[ImGuiCol_TabActive] = ImVec4(0.94f, 0.24f, 0.24f, 1);
+        style.Colors[ImGuiCol_TabActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);
         style.Colors[ImGuiCol_TabHovered] = ImVec4(0.94f, 0.24f, 0.24f, 1);
         style.Colors[ImGuiCol_TabUnfocused] = ImVec4(0.15f, 0.15f, 0.15f, 1);
         style.Colors[ImGuiCol_TabUnfocusedActive] = ImVec4(0.15f, 0.15f, 0.15f, 1);

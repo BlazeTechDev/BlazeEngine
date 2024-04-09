@@ -7445,7 +7445,7 @@ bool    ImGui::BeginTabBarEx(ImGuiTabBar* tab_bar, const ImRect& tab_bar_bb, ImG
     window->DC.CursorPos = ImVec2(tab_bar->BarRect.Min.x, tab_bar->BarRect.Max.y + tab_bar->ItemSpacingY);
 
     // Draw separator
-    const ImU32 col = GetColorU32((flags & ImGuiTabBarFlags_IsFocused) ? ImGuiCol_TabActive : ImGuiCol_TabUnfocusedActive);
+    const ImU32 col = GetColorU32((flags & ImGuiCol_TabUnfocusedActive) ? ImGuiCol_TabActive : ImGuiCol_TabUnfocused);
     const float y = tab_bar->BarRect.Max.y - 1.0f;
     if (dock_node != NULL)
     {
@@ -7459,6 +7459,7 @@ bool    ImGui::BeginTabBarEx(ImGuiTabBar* tab_bar, const ImRect& tab_bar_bb, ImG
         const float separator_max_x = tab_bar->BarRect.Max.x + IM_FLOOR(window->WindowPadding.x * 0.5f);
         window->DrawList->AddLine(ImVec2(separator_min_x, y), ImVec2(separator_max_x, y), col, 1.0f);
     }
+
     return true;
 }
 
@@ -8241,6 +8242,14 @@ bool    ImGui::TabItemEx(ImGuiTabBar* tab_bar, const char* label, bool* p_open, 
                 TabBarQueueFocus(tab_bar, tab); // New tabs gets activated
         if ((flags & ImGuiTabItemFlags_SetSelected) && (tab_bar->SelectedTabId != id)) // _SetSelected can only be passed on explicit tab bar
             TabBarQueueFocus(tab_bar, tab);
+
+        if (tab_bar->SelectedTabId == id)
+        {
+            const float upper_line_min_x = tab_bar->BarRect.Min.x + tab->Offset;
+            const float upper_line_max_x = tab_bar->BarRect.Min.x + tab->Width + tab->Offset;
+            window->DrawList->AddLine(ImVec2(upper_line_min_x, tab_bar->BarRect.GetCenter().y - 10), ImVec2(upper_line_max_x, tab_bar->BarRect.GetCenter().y - 10), GetColorU32(ImGuiCol(ImGuiCol_SeparatorHovered)), 2.0f);
+
+        }
     }
 
     // Lock visibility
