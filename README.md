@@ -1,3 +1,5 @@
+# Blaze Engine [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 <img src="https://github.com/BlazeTechDev/BlazeEngine/blob/master/github/blaze_logo_text.svg">
 
 # Project Overview
