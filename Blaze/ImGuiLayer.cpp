@@ -284,11 +284,11 @@ namespace Blaze
 
 
         style.ChildRounding = 3;
-        style.FrameRounding = 1;
-        style.GrabRounding = 1;
-        style.PopupRounding = 10;
+        style.FrameRounding = 0;
+        style.GrabRounding = 2;
+        style.PopupRounding = 3;
         style.TabRounding = 0;
-        style.WindowRounding = 10;
+        style.WindowRounding = 0;
 
         style.FrameBorderSize = 1;
 
