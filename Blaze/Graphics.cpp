@@ -12,32 +12,40 @@
 
 namespace Blaze
 {
-
-#ifdef BLZ_OPENGL_GRAPHICS
 	static GLFWwindow* s_Window = nullptr;
 
 	void Graphics::Initialize(Window* window)
 	{
-		s_Window = OpenGLImpl::InitializeOpenGL(window);
+		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		{
+			s_Window = OpenGLImpl::InitializeOpenGL(window);
 
-		WindowsWindow* app_window = (WindowsWindow*)window;
-		app_window->m_Window = s_Window;
+			WindowsWindow* app_window = (WindowsWindow*)window;
+			app_window->m_Window = s_Window;
+		}
 	}
 
 	void Graphics::Shutdown()
 	{
-		OpenGLImpl::ShutdownOpenGL();
+		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		{
+			OpenGLImpl::ShutdownOpenGL();
+		}
 	}
 
 	void Graphics::Update()
 	{
-		OpenGLImpl::OpenGLPreRenderBufferSwap();
+		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		{
+			OpenGLImpl::OpenGLPreRenderBufferSwap();
+		}
 	}
 
 	void Graphics::SetVSync(bool enabled)
 	{
-		OpenGLImpl::OpenGLSetVSync(enabled);
+		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		{
+			OpenGLImpl::OpenGLSetVSync(enabled);
+		}
 	}
-#endif
-
 }
