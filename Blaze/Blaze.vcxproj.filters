@@ -73,6 +73,9 @@
     <ClInclude Include="Buffer.hpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClInclude>
+    <ClInclude Include="Versions.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">

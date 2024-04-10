@@ -281,8 +281,6 @@ namespace Blaze
         style.Colors[ImGuiCol_PlotLines] = ImGuiBlazeTheme::RedPrimary;
         style.Colors[ImGuiCol_PlotLinesHovered] = ImGuiBlazeTheme::RedSecondary;
 
-
-
         style.ChildRounding = 3;
         style.FrameRounding = 0;
         style.GrabRounding = 2;

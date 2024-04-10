@@ -16,6 +16,9 @@
 #include "Log.hpp"
 #include "Application.hpp"
 
+#include "Buffer.hpp"
+#include "Graphics.hpp"
+
 // --Entry Point--
 
 #include "EntryPoint.hpp"

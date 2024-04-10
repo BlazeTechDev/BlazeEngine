@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.hpp"
+#include "Versions.hpp"
 
 namespace Blaze
 {
@@ -10,7 +11,7 @@ namespace Blaze
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Blaze Engine",
+		WindowProps(const std::string& title = "Blaze Engine v" + ENGINE_VERSION,
 			unsigned int width = 1280,
 			unsigned int height = 720) 
 			: Title(title), Width(width), Height(height) {}

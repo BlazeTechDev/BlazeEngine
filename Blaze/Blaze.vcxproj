@@ -175,6 +175,7 @@
     <ClInclude Include="OpenGLImpl.hpp" />
     <ClInclude Include="PropertiesWindow.hpp" />
     <ClInclude Include="SceneViewport.hpp" />
+    <ClInclude Include="Versions.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowEvent.hpp" />
     <ClInclude Include="WindowsWindow.hpp" />
