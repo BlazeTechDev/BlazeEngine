@@ -5,9 +5,11 @@
 #include "blzpch.hpp"
 #include "ImGuiLayer.hpp"
 
+//Editor Windows
 #include "ConsoleWindow.hpp"
 #include "SceneViewport.hpp"
 #include "PropertiesWindow.hpp"
+#include "CollectionWindow.hpp"
 
 #include "Layer.hpp"
 #include "LayerStack.hpp"

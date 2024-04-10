@@ -10,6 +10,7 @@ public:
 		s_ImGuiLayer->PushEditorWindow(new Blaze::ConsoleWindow());
 		s_ImGuiLayer->PushEditorWindow(new Blaze::SceneViewport());
 		s_ImGuiLayer->PushEditorWindow(new Blaze::PropertiesWindow());
+		s_ImGuiLayer->PushEditorWindow(new Blaze::CollectionWindow());
 	}
 
 	void OnUpdate() override

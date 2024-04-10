@@ -158,6 +158,7 @@
     <ClInclude Include="Application.hpp" />
     <ClInclude Include="ApplicationEvent.hpp" />
     <ClInclude Include="Blaze.hpp" />
+    <ClInclude Include="CollectionWindow.hpp" />
     <ClInclude Include="ConsoleWindow.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="EditorWindow.hpp" />
@@ -180,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="CollectionWindow.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImGuiLayer.cpp" />
