@@ -70,6 +70,9 @@
     <ClInclude Include="CollectionWindow.hpp">
       <Filter>src\Blaze\ImGui\EditorWindows</Filter>
     </ClInclude>
+    <ClInclude Include="Buffer.hpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -114,6 +117,9 @@
     <ClCompile Include="CollectionWindow.cpp">
       <Filter>src\Blaze\ImGui\EditorWindows</Filter>
     </ClCompile>
+    <ClCompile Include="Buffer.cpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -142,6 +148,9 @@
     </Filter>
     <Filter Include="src\Blaze\ImGui\EditorWindows">
       <UniqueIdentifier>{d2d59887-6c49-45fe-a6e8-6d16ef5f7e22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Graphics\Types">
+      <UniqueIdentifier>{d43cf5ac-3a29-4521-b782-be25184c52fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

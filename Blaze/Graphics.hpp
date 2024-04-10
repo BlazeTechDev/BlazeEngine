@@ -13,11 +13,6 @@ namespace Blaze
 		DirectX = 3
 	};
 
-	struct BLAZE_API AgnosticFrameBuffer
-	{
-		unsigned int OpenGLFrameBuffer;
-	};
-
 	class BLAZE_API Graphics
 	{
 	public:
