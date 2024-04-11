@@ -14,6 +14,8 @@ namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
 
+	FrameBuffer* Graphics::m_SceneViewportFrameBuffer = nullptr;
+
 	void Graphics::Initialize(Window* window)
 	{
 		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
@@ -22,6 +24,8 @@ namespace Blaze
 
 			WindowsWindow* app_window = (WindowsWindow*)window;
 			app_window->m_Window = s_Window;
+
+			m_SceneViewportFrameBuffer = new FrameBuffer();
 		}
 	}
 
@@ -47,5 +51,15 @@ namespace Blaze
 		{
 			OpenGLImpl::OpenGLSetVSync(enabled);
 		}
+	}
+
+	void Graphics::BindSceneViewportFrameBuffer()
+	{
+		m_SceneViewportFrameBuffer->Bind();
+	}
+
+	void Graphics::UnBindSceneViewportFrameBuffer()
+	{
+		m_SceneViewportFrameBuffer->UnBind();
 	}
 }

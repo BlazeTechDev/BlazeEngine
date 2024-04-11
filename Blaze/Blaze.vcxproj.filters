@@ -76,6 +76,15 @@
     <ClInclude Include="Versions.hpp">
       <Filter>src\Blaze\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Collection.hpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -123,6 +132,15 @@
     <ClCompile Include="Buffer.cpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClCompile>
+    <ClCompile Include="Collection.cpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>src\Blaze\Collection</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -154,6 +172,9 @@
     </Filter>
     <Filter Include="src\Blaze\Graphics\Types">
       <UniqueIdentifier>{d43cf5ac-3a29-4521-b782-be25184c52fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Blaze\Collection">
+      <UniqueIdentifier>{a0189585-b5d1-49cd-9595-2827374fa620}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

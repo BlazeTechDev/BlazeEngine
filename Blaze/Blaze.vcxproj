@@ -159,10 +159,13 @@
     <ClInclude Include="ApplicationEvent.hpp" />
     <ClInclude Include="Blaze.hpp" />
     <ClInclude Include="Buffer.hpp" />
+    <ClInclude Include="Collection.hpp" />
     <ClInclude Include="CollectionWindow.hpp" />
+    <ClInclude Include="Component.hpp" />
     <ClInclude Include="ConsoleWindow.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="EditorWindow.hpp" />
+    <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntryPoint.hpp" />
     <ClInclude Include="Event.hpp" />
     <ClInclude Include="Graphics.hpp" />
@@ -184,8 +187,11 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Buffer.cpp" />
+    <ClCompile Include="Collection.cpp" />
     <ClCompile Include="CollectionWindow.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImGuiLayer.cpp" />
     <ClCompile Include="Layer.cpp" />

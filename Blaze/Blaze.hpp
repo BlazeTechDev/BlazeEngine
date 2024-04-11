@@ -16,8 +16,14 @@
 #include "Log.hpp"
 #include "Application.hpp"
 
+//Graphics
 #include "Buffer.hpp"
 #include "Graphics.hpp"
+
+//Collection and ECS
+#include "Collection.hpp"
+#include "Entity.hpp"
+#include "Component.hpp"
 
 // --Entry Point--
 

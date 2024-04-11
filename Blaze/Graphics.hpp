@@ -2,6 +2,7 @@
 
 #include "Core.hpp"
 #include "Window.hpp"
+#include "Buffer.hpp"
 
 namespace Blaze
 {
@@ -22,9 +23,16 @@ namespace Blaze
 
 		static void SetVSync(bool enabled);
 
+		static void BindSceneViewportFrameBuffer();
+		static void UnBindSceneViewportFrameBuffer();
+
+		static FrameBuffer* GetSceneViewportFrameBuffer() { return m_SceneViewportFrameBuffer; }
+
 		const static GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
-			
+		
 	private:
+		static FrameBuffer* m_SceneViewportFrameBuffer;
+		
 		const static GraphicsAPIType m_EngineGraphicsAPI = GraphicsAPIType::OpenGL;
 	};
 }
