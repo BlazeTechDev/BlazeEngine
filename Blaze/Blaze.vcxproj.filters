@@ -79,6 +79,9 @@
     <ClInclude Include="Collection.hpp">
       <Filter>src\Blaze\Collection</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.hpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -128,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="Collection.cpp">
       <Filter>src\Blaze\Collection</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

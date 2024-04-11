@@ -18,6 +18,7 @@
 
 //Graphics
 #include "Buffer.hpp"
+#include "Texture.hpp"
 #include "Graphics.hpp"
 
 //Collection and ECS
