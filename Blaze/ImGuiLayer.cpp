@@ -171,6 +171,9 @@ namespace Blaze
 
 	void ImGuiLayer::OnUpdate()
 	{
+        //remove once opengl graphics are finished
+        return;
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
