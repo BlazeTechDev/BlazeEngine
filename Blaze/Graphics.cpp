@@ -20,7 +20,7 @@ namespace Blaze
 
 	Graphics::Graphics()
 	{
-		BLZ_CORE_ASSERT(!s_Instance, "application already exists");
+		BLZ_CORE_ASSERT(!s_Instance, "graphics instance already exists");
 		s_Instance = this;
 	}
 
