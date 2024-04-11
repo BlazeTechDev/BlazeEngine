@@ -79,12 +79,6 @@
     <ClInclude Include="Collection.hpp">
       <Filter>src\Blaze\Collection</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.hpp">
-      <Filter>src\Blaze\Collection</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>src\Blaze\Collection</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -133,12 +127,6 @@
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClCompile>
     <ClCompile Include="Collection.cpp">
-      <Filter>src\Blaze\Collection</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>src\Blaze\Collection</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
       <Filter>src\Blaze\Collection</Filter>
     </ClCompile>
   </ItemGroup>

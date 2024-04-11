@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Dev\blaze\BlazeEngine\bin\Debug-windows-x86_64\Blaze\Blaze.dll</FullPath>
+      <FullPath>C:\Users\teschnerm\source\repos\BlazeTechDev\BlazeEngine\bin\Debug-windows-x86_64\Blaze\Blaze.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Dev\blaze\BlazeEngine\bin\Debug-windows-x86_64\Enferno\Enferno.exe</FullPath>
+      <FullPath>C:\Users\teschnerm\source\repos\BlazeTechDev\BlazeEngine\bin\Debug-windows-x86_64\Enferno\Enferno.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

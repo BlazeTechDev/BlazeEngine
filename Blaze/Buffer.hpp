@@ -10,6 +10,8 @@ namespace Blaze
 		Buffer() { m_Id = 0; };
 		~Buffer() {};
 
+		virtual void Create() {};
+
 		virtual void Bind() {};
 		virtual void UnBind() {};
 
@@ -24,6 +26,8 @@ namespace Blaze
 	public:
 		VertexBuffer();
 		~VertexBuffer();
+
+		virtual void Create() override;
 
 		virtual void Bind() override;
 		virtual void UnBind() override;
@@ -46,6 +50,8 @@ namespace Blaze
 		~FrameBuffer();
 
 		bool IsFrameBufferComplete();
+
+		virtual void Create() override;
 
 		virtual void Bind() override;
 		virtual void UnBind() override;

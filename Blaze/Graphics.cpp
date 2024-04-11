@@ -13,8 +13,16 @@
 namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
+	
+	Graphics* Graphics::s_Instance = nullptr;
 
-	FrameBuffer* Graphics::m_SceneViewportFrameBuffer = nullptr;
+	FrameBuffer* m_SceneViewportFrameBuffer = nullptr;
+
+	Graphics::Graphics()
+	{
+		BLZ_CORE_ASSERT(!s_Instance, "application already exists");
+		s_Instance = this;
+	}
 
 	void Graphics::Initialize(Window* window)
 	{
@@ -26,6 +34,7 @@ namespace Blaze
 			app_window->m_Window = s_Window;
 
 			m_SceneViewportFrameBuffer = new FrameBuffer();
+			m_SceneViewportFrameBuffer->Create();
 		}
 	}
 

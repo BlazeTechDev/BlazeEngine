@@ -37,22 +37,22 @@ namespace Blaze
 
 		BLZ_CORE_INFO("creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
-		Graphics::Initialize(this);
+		Graphics::Get()->Initialize(this);
 	}
 
 	void WindowsWindow::Shutdown()
 	{
-		Graphics::Shutdown();
+		Graphics::Get()->Shutdown();
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
-		Graphics::Update();
+		Graphics::Get()->Update();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
-		Graphics::SetVSync(enabled);
+		Graphics::Get()->SetVSync(enabled);
 		m_Data.VSync = enabled;
 	}
 

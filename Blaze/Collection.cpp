@@ -13,15 +13,7 @@ namespace Blaze
 
 	Collection::~Collection()
 	{
-		for (Entity* entity : m_Entities)
-		{
-			delete entity;
-		}
 
-		for (Component* component : m_Components)
-		{
-			delete component;
-		}
 	}
 
 	void Collection::Start()
@@ -41,13 +33,8 @@ namespace Blaze
 
 	void Collection::DrawCollection()
 	{
-		Graphics::BindSceneViewportFrameBuffer();
+		Graphics::Get()->BindSceneViewportFrameBuffer();
 
-		for (Component* component : m_Components)
-		{
-			BLZ_CORE_INFO("drawing collection {0}", m_Name);
-		}
-
-		Graphics::UnBindSceneViewportFrameBuffer();
+		Graphics::Get()->UnBindSceneViewportFrameBuffer();
 	}
 }

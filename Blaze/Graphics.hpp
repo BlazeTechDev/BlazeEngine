@@ -17,22 +17,28 @@ namespace Blaze
 	class BLAZE_API Graphics
 	{
 	public:
-		static void Initialize(Window* window);
-		static void Shutdown();
-		static void Update();
+		Graphics();
 
-		static void SetVSync(bool enabled);
+		void Initialize(Window* window);
+		void Shutdown();
+		void Update();
 
-		static void BindSceneViewportFrameBuffer();
-		static void UnBindSceneViewportFrameBuffer();
+		void SetVSync(bool enabled);
 
-		static FrameBuffer* GetSceneViewportFrameBuffer() { return m_SceneViewportFrameBuffer; }
+		void BindSceneViewportFrameBuffer();
+		void UnBindSceneViewportFrameBuffer();
 
-		const static GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
+		FrameBuffer* GetSceneViewportFrameBuffer() { return m_SceneViewportFrameBuffer; }
+
+		const GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
+
+		static Graphics* Get() { return s_Instance; }
 		
 	private:
-		static FrameBuffer* m_SceneViewportFrameBuffer;
+		FrameBuffer* m_SceneViewportFrameBuffer;
 		
 		const static GraphicsAPIType m_EngineGraphicsAPI = GraphicsAPIType::OpenGL;
+
+		static Graphics* s_Instance;
 	};
 }

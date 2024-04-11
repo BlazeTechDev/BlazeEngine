@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Core.hpp"
-#include "Entity.hpp"
-#include "Component.hpp"
 
 namespace Blaze
 {
@@ -21,9 +19,6 @@ namespace Blaze
 
 	private:
 		void DrawCollection();
-
-		std::vector<Entity*> m_Entities;
-		std::vector<Component*> m_Components;
 
 		std::string m_Name;
 	};

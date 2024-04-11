@@ -22,8 +22,6 @@
 
 //Collection and ECS
 #include "Collection.hpp"
-#include "Entity.hpp"
-#include "Component.hpp"
 
 // --Entry Point--
 
