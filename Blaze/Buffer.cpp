@@ -28,6 +28,16 @@ namespace Blaze
 		}
 	}
 
+	void VertexBuffer::UploadData(std::vector<float>* data)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			Bind();
+			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data, GL_STATIC_DRAW);
+			UnBind();
+		}
+	}
+
 	void VertexBuffer::Bind()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
@@ -123,6 +133,30 @@ namespace Blaze
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			glBindBuffer(GL_FRAMEBUFFER, 0);
+		}
+	}
+
+	void AttributeArray::Create()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glGenVertexArrays(1, &m_Id);
+		}
+	}
+
+	void AttributeArray::Enable(int index)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glEnableVertexAttribArray(index);
+		}
+	}
+
+	void AttributeArray::Disable(int index)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glDisableVertexAttribArray(index);
 		}
 	}
 }

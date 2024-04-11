@@ -4,6 +4,24 @@
 
 namespace Blaze
 {
+	class BLAZE_API AttributeArray
+	{
+	public:
+		AttributeArray() { m_Id = 0; }
+
+		void Create();
+
+		void CreateAttributePointer() {};
+
+		void Enable(int indeex);
+		void Disable(int index);
+
+		unsigned int GetID() { return m_Id; }
+
+	private:
+		unsigned int m_Id;
+	};
+
 	class BLAZE_API Buffer
 	{
 	public:
@@ -28,6 +46,8 @@ namespace Blaze
 		~VertexBuffer();
 
 		virtual void Create() override;
+
+		void UploadData(std::vector<float>* data);
 
 		virtual void Bind() override;
 		virtual void UnBind() override;

@@ -26,7 +26,7 @@ namespace Blaze
 
 	Application::~Application()
 	{
-
+		delete m_Graphics;
 	}
 
 	void Application::PushLayer(Layer* layer)

@@ -4,6 +4,7 @@
 #include "Application.hpp"
 #include "Log.hpp"
 #include "Window.hpp"
+#include "Buffer.hpp"
 #include "WindowsWindow.hpp"
 #include "OpenGLImpl.hpp"
 
@@ -14,6 +15,12 @@ namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
 	
+	std::vector<float> vertices = { -0.5f, -0.5f, 0,
+						0.5f, -0.5f, 0,
+						0, 0.5, 0 };
+
+	VertexBuffer* buffer = nullptr;
+
 	Graphics* Graphics::s_Instance = nullptr;
 
 	FrameBuffer* m_SceneViewportFrameBuffer = nullptr;
@@ -35,6 +42,10 @@ namespace Blaze
 
 			m_SceneViewportFrameBuffer = new FrameBuffer();
 			m_SceneViewportFrameBuffer->Create();
+
+			buffer = new VertexBuffer();
+			buffer->Create();
+			buffer->UploadData(&vertices);
 		}
 	}
 
