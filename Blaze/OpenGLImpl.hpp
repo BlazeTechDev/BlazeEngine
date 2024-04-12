@@ -22,5 +22,7 @@ namespace Blaze
 		static void DrawTriangleWithElements();
 
 		static int GetOpenGLDataType(BlazeDataType type);
+
+		static unsigned int CreateOpenGLShader(const std::string& vertexSource, const std::string& fragmentSource);
 	};
 }
