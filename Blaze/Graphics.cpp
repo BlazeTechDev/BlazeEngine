@@ -25,6 +25,8 @@ namespace Blaze
 
 	FrameBuffer* m_SceneViewportFrameBuffer = nullptr;
 
+	AttributeArray* attrib = nullptr;
+
 	Graphics::Graphics()
 	{
 		BLZ_CORE_ASSERT(!s_Instance, "graphics instance already exists");
@@ -43,9 +45,17 @@ namespace Blaze
 			m_SceneViewportFrameBuffer = new FrameBuffer();
 			m_SceneViewportFrameBuffer->Create();
 
+			attrib = new AttributeArray();
+			attrib->Create();
+			attrib->Bind();
+
 			buffer = new VertexBuffer();
 			buffer->Create();
+			buffer->Bind();
 			buffer->UploadData(&vertices);
+
+			attrib->Enable(0);
+			attrib->CreateAttributePointer(0, 3, BLZ_FLOAT, sizeof(float));
 		}
 	}
 
@@ -62,6 +72,8 @@ namespace Blaze
 		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
 		{
 			OpenGLImpl::OpenGLPreRenderBufferSwap();
+			attrib->Bind();
+			OpenGLImpl::DrawTiangleArrays();
 		}
 	}
 

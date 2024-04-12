@@ -2,6 +2,7 @@
 #include "Buffer.hpp"
 
 #include "Graphics.hpp"
+#include "OpenGLImpl.hpp"
 
 #include <glad/glad.h>
 
@@ -32,9 +33,7 @@ namespace Blaze
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
-			Bind();
-			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data, GL_STATIC_DRAW);
-			UnBind();
+			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data->data(), GL_STATIC_DRAW);
 		}
 	}
 
@@ -141,6 +140,30 @@ namespace Blaze
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			glGenVertexArrays(1, &m_Id);
+		}
+	}
+
+	void AttributeArray::CreateAttributePointer(int index, int size, BlazeDataType data_type, size_t data_type_size)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glVertexAttribPointer(index, size, OpenGLImpl::GetOpenGLDataType(data_type), GL_FALSE, size * data_type_size, (void*)0);
+		}
+	}
+
+	void AttributeArray::Bind()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glBindVertexArray(m_Id);
+		}
+	}
+
+	void AttributeArray::UnBind()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glBindVertexArray(0);
 		}
 	}
 

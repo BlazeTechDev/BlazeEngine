@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Window.hpp"
+#include "Buffer.hpp"
 
 #include <GLFW/glfw3.h>
 
@@ -15,5 +16,9 @@ namespace Blaze
 		static void OpenGLSetVSync(bool enabled);
 
 		static void ShutdownOpenGL();
+
+		static void DrawTiangleArrays();
+
+		static int GetOpenGLDataType(BlazeDataType type);
 	};
 }

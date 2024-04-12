@@ -129,8 +129,8 @@ namespace Blaze
 
 	void OpenGLImpl::OpenGLPreRenderBufferSwap()
 	{
-		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
+		glfwPollEvents();
 	}
 
 	void OpenGLImpl::OpenGLSetVSync(bool enabled)
@@ -141,5 +141,25 @@ namespace Blaze
 	void OpenGLImpl::ShutdownOpenGL()
 	{
 		glfwDestroyWindow(m_Window);
+	}
+
+	void OpenGLImpl::DrawTiangleArrays()
+	{
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+	}
+
+	int OpenGLImpl::GetOpenGLDataType(BlazeDataType type)
+	{
+		switch (type)
+		{
+		case BLZ_FLOAT:
+			return GL_FLOAT;
+		case BLZ_INT:
+			return GL_INT;
+		case BLZ_DOUBLE:
+			return GL_DOUBLE;
+		}
+
+		return GL_NONE;
 	}
 }

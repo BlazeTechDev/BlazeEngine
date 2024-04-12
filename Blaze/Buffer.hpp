@@ -4,6 +4,13 @@
 
 namespace Blaze
 {
+	enum BLAZE_API BlazeDataType
+	{
+		BLZ_FLOAT,
+		BLZ_INT,
+		BLZ_DOUBLE,
+	};
+
 	class BLAZE_API AttributeArray
 	{
 	public:
@@ -11,7 +18,10 @@ namespace Blaze
 
 		void Create();
 
-		void CreateAttributePointer() {};
+		void CreateAttributePointer(int index, int size, BlazeDataType data_type, size_t data_type_size);
+
+		void Bind();
+		void UnBind();
 
 		void Enable(int indeex);
 		void Disable(int index);
