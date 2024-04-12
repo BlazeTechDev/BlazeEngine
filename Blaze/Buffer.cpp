@@ -159,11 +159,11 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::CreateAttributePointer(int index, int size, BlazeDataType data_type, size_t data_type_size)
+	void AttributeArray::CreateAttributePointer(int index, int size, BlazeDataType data_type, bool normalized, uint32_t stride, uint32_t offset)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
-			glVertexAttribPointer(index, size, OpenGLImpl::GetOpenGLDataType(data_type), GL_FALSE, size * data_type_size, (void*)0);
+			glVertexAttribPointer(index, size, OpenGLImpl::GetOpenGLDataType(data_type), normalized ? GL_TRUE : GL_FALSE, stride, (const void*)offset);
 		}
 	}
 
@@ -180,6 +180,18 @@ namespace Blaze
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			glBindVertexArray(0);
+		}
+	}
+
+	void AttributeArray::CompileLayouts()
+	{
+		int index = 0;
+
+		for (BufferElement element : m_Layout->GetElements())
+		{
+			Enable(index);
+			CreateAttributePointer(index, element.GetElementCount(), ShaderDataTypeToBlazeDataType(element.Type), element.Normalized, m_Layout->GetStride(), element.Offset);
+			index++;
 		}
 	}
 

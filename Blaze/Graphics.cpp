@@ -16,29 +16,35 @@ namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
 	
-	const std::vector<float> vertices = { -0.5f, -0.5f, 0,
-						0.5f, -0.5f, 0,
-						0, 0.5, 0 };
+	const std::vector<float> vertices = { -0.5f, -0.5f, 0, 1,0.3f,0.3f,1,
+						0.5f, -0.5f, 0, 0.3f,1,0.3f,1,
+						0, 0.5, 0, 0.3f,0.3f,1,1, };
 
 	const std::vector<int> indices = { 0, 1, 2 };
 
 	const std::string vertexSource = R"(
 		#version 330 core
-		layout (location = 0) in vec3 aPos;
+		layout (location = 0) in vec3 a_Position;
+		layout (location = 1) in vec4 a_Color;
+
+		out vec4 color;
 
 		void main()
 		{
-			gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+			gl_Position = vec4(a_Position.x, a_Position.y, a_Position.z, 1.0);
+			color = a_Color;
 		}
 	)";
 
 	const std::string fragmentSource = R"(
 		#version 330 core
+		in vec4 color;
+
 		out vec4 FragColor;
 
 		void main()
 		{
-			FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+			FragColor = color;
 		} 
 	)";
 
@@ -70,7 +76,7 @@ namespace Blaze
 			m_SceneViewportFrameBuffer = new FrameBuffer();
 			m_SceneViewportFrameBuffer->Create();
 
-			shader = new Shader(vertexSource, fragmentSource);
+			shader = new Shader(vertexSource, fragmentSource); 
 
 			attrib = new AttributeArray();
 			attrib->Create();
@@ -81,8 +87,13 @@ namespace Blaze
 			buffer->Bind();
 			buffer->UploadData(&vertices);
 
-			attrib->Enable(0);
-			attrib->CreateAttributePointer(0, 3, BLZ_FLOAT, sizeof(float));
+			BufferLayout layout = {
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" }
+			};
+
+			attrib->SetLayout(&layout);
+			attrib->CompileLayouts();
 
 			e_buffer = new ElementBuffer();
 			e_buffer->Create();

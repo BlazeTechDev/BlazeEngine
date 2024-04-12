@@ -159,11 +159,11 @@ namespace Blaze
 	{
 		switch (type)
 		{
-		case BLZ_FLOAT:
+		case BlazeDataType::BLZ_FLOAT:
 			return GL_FLOAT;
-		case BLZ_INT:
+		case BlazeDataType::BLZ_INT:
 			return GL_INT;
-		case BLZ_DOUBLE:
+		case BlazeDataType::BLZ_DOUBLE:
 			return GL_DOUBLE;
 		}
 
