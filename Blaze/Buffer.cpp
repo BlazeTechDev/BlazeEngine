@@ -29,7 +29,7 @@ namespace Blaze
 		}
 	}
 
-	void VertexBuffer::UploadData(std::vector<float>* data)
+	void VertexBuffer::UploadData(const std::vector<float>* data)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -37,7 +37,7 @@ namespace Blaze
 		}
 	}
 
-	void VertexBuffer::Bind()
+	void VertexBuffer::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -45,7 +45,7 @@ namespace Blaze
 		}
 	}
 
-	void VertexBuffer::UnBind()
+	void VertexBuffer::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -77,7 +77,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::UploadData(std::vector<int>* data)
+	void ElementBuffer::UploadData(const std::vector<int>* data)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -85,7 +85,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::Bind()
+	void ElementBuffer::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -93,7 +93,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::UnBind()
+	void ElementBuffer::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -135,7 +135,7 @@ namespace Blaze
 		}
 	}
 
-	void FrameBuffer::Bind()
+	void FrameBuffer::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -143,7 +143,7 @@ namespace Blaze
 		}
 	}
 
-	void FrameBuffer::UnBind()
+	void FrameBuffer::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -167,7 +167,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::Bind()
+	void AttributeArray::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -175,7 +175,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::UnBind()
+	void AttributeArray::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{

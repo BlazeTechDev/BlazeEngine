@@ -20,8 +20,8 @@ namespace Blaze
 
 		void CreateAttributePointer(int index, int size, BlazeDataType data_type, size_t data_type_size);
 
-		void Bind();
-		void UnBind();
+		void Bind() const;
+		void UnBind() const;
 
 		void Enable(int indeex);
 		void Disable(int index);
@@ -40,8 +40,8 @@ namespace Blaze
 
 		virtual void Create() {};
 
-		virtual void Bind() {};
-		virtual void UnBind() {};
+		virtual void Bind() const {};
+		virtual void UnBind() const {};
 
 		unsigned int GetId() { return m_Id; }
 
@@ -57,10 +57,10 @@ namespace Blaze
 
 		virtual void Create() override;
 
-		void UploadData(std::vector<float>* data);
+		void UploadData(const std::vector<float>* data);
 
-		virtual void Bind() override;
-		virtual void UnBind() override;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
 	};
 
 	class BLAZE_API ElementBuffer : public Buffer
@@ -71,10 +71,10 @@ namespace Blaze
 
 		virtual void Create() override;
 
-		void UploadData(std::vector<int>* data);
+		void UploadData(const std::vector<int>* data);
 
-		virtual void Bind() override;
-		virtual void UnBind() override;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
 	};
 
 	class BLAZE_API FrameBuffer : public Buffer
@@ -87,7 +87,7 @@ namespace Blaze
 
 		virtual void Create() override;
 
-		virtual void Bind() override;
-		virtual void UnBind() override;
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
 	};
 }

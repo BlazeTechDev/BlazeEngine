@@ -5,6 +5,7 @@
 #include "Log.hpp"
 #include "Window.hpp"
 #include "Buffer.hpp"
+#include "Shader.hpp"
 #include "WindowsWindow.hpp"
 #include "OpenGLImpl.hpp"
 
@@ -15,14 +16,35 @@ namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
 	
-	std::vector<float> vertices = { -0.5f, -0.5f, 0,
+	const std::vector<float> vertices = { -0.5f, -0.5f, 0,
 						0.5f, -0.5f, 0,
 						0, 0.5, 0 };
 
-	std::vector<int> indices = { 0, 1, 2 };
+	const std::vector<int> indices = { 0, 1, 2 };
+
+	const std::string vertexSource = R"(
+		#version 330 core
+		layout (location = 0) in vec3 aPos;
+
+		void main()
+		{
+			gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+		}
+	)";
+
+	const std::string fragmentSource = R"(
+		#version 330 core
+		out vec4 FragColor;
+
+		void main()
+		{
+			FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+		} 
+	)";
 
 	VertexBuffer* buffer = nullptr;
 	ElementBuffer* e_buffer = nullptr;
+	Shader* shader = nullptr;
 
 	Graphics* Graphics::s_Instance = nullptr;
 
@@ -48,6 +70,8 @@ namespace Blaze
 			m_SceneViewportFrameBuffer = new FrameBuffer();
 			m_SceneViewportFrameBuffer->Create();
 
+			shader = new Shader(vertexSource, fragmentSource);
+
 			attrib = new AttributeArray();
 			attrib->Create();
 			attrib->Bind();
@@ -71,6 +95,7 @@ namespace Blaze
 	{
 		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
 		{
+			delete shader;
 			OpenGLImpl::ShutdownOpenGL();
 		}
 	}
@@ -81,7 +106,10 @@ namespace Blaze
 		{
 			OpenGLImpl::OpenGLPreRenderBufferSwap();
 			attrib->Bind();
+
+			shader->Bind();
 			OpenGLImpl::DrawTriangleWithElements();
+			shader->UnBind();
 		}
 	}
 

@@ -124,6 +124,8 @@ namespace Blaze
 			data.EventCallback(event);
 		});
 
+		BLZ_CORE_INFO("OpenGL Renderer version: {0} {1} initialized", (char*)glGetString(GL_VENDOR), (char*)glGetString(GL_RENDERER));
+
 		return m_Window;
 	}
 

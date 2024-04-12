@@ -20,6 +20,7 @@
 #include "Buffer.hpp"
 #include "Texture.hpp"
 #include "Graphics.hpp"
+#include "Shader.hpp"
 
 //Collection and ECS
 #include "Collection.hpp"

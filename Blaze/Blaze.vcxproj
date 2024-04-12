@@ -176,6 +176,7 @@
     <ClInclude Include="OpenGLImpl.hpp" />
     <ClInclude Include="PropertiesWindow.hpp" />
     <ClInclude Include="SceneViewport.hpp" />
+    <ClInclude Include="Shader.hpp" />
     <ClInclude Include="Texture.hpp" />
     <ClInclude Include="Versions.hpp" />
     <ClInclude Include="Window.hpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="OpenGLImpl.cpp" />
     <ClCompile Include="PropertiesWindow.cpp" />
     <ClCompile Include="SceneViewport.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="WindowsWindow.cpp" />
     <ClCompile Include="blzpch.cpp">
