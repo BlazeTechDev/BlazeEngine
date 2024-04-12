@@ -19,7 +19,10 @@ namespace Blaze
 						0.5f, -0.5f, 0,
 						0, 0.5, 0 };
 
+	std::vector<int> indices = { 0, 1, 2 };
+
 	VertexBuffer* buffer = nullptr;
+	ElementBuffer* e_buffer = nullptr;
 
 	Graphics* Graphics::s_Instance = nullptr;
 
@@ -56,6 +59,11 @@ namespace Blaze
 
 			attrib->Enable(0);
 			attrib->CreateAttributePointer(0, 3, BLZ_FLOAT, sizeof(float));
+
+			e_buffer = new ElementBuffer();
+			e_buffer->Create();
+			e_buffer->Bind();
+			e_buffer->UploadData(&indices);
 		}
 	}
 
@@ -73,7 +81,7 @@ namespace Blaze
 		{
 			OpenGLImpl::OpenGLPreRenderBufferSwap();
 			attrib->Bind();
-			OpenGLImpl::DrawTiangleArrays();
+			OpenGLImpl::DrawTriangleWithElements();
 		}
 	}
 

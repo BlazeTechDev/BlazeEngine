@@ -69,6 +69,22 @@ namespace Blaze
 		}
 	}
 
+	void ElementBuffer::Create()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glGenBuffers(1, &m_Id);
+		}
+	}
+
+	void ElementBuffer::UploadData(std::vector<int>* data)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(int), data->data(), GL_STATIC_DRAW);
+		}
+	}
+
 	void ElementBuffer::Bind()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)

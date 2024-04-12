@@ -17,7 +17,9 @@ namespace Blaze
 
 		static void ShutdownOpenGL();
 
-		static void DrawTiangleArrays();
+		static void DrawTriangleWithArrays();
+
+		static void DrawTriangleWithElements();
 
 		static int GetOpenGLDataType(BlazeDataType type);
 	};

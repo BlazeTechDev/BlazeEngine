@@ -69,6 +69,10 @@ namespace Blaze
 		ElementBuffer();
 		~ElementBuffer();
 
+		virtual void Create() override;
+
+		void UploadData(std::vector<int>* data);
+
 		virtual void Bind() override;
 		virtual void UnBind() override;
 	};
