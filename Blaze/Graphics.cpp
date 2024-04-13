@@ -16,23 +16,23 @@ namespace Blaze
 {
 	static GLFWwindow* s_Window = nullptr;
 	
-	const std::vector<float> vertices = { -0.5f, -0.5f, 0, 1,0.3f,0.3f,1,
-						0.5f, -0.5f, 0, 0.3f,1,0.3f,1,
-						0, 0.5, 0, 0.3f,0.3f,1,1, };
+	const std::vector<float> vertices = { -0.5f, -0.5f, 0,
+						0.5f, -0.5f, 0,
+						0.5f, 0.5f, 0,
+						-0.5f, 0.5f, 0,};
 
-	const std::vector<int> indices = { 0, 1, 2 };
+	const std::vector<int> indices = { 0, 1, 2, 2, 3, 0 };
 
 	const std::string vertexSource = R"(
 		#version 330 core
 		layout (location = 0) in vec3 a_Position;
-		layout (location = 1) in vec4 a_Color;
 
 		out vec4 color;
 
 		void main()
 		{
 			gl_Position = vec4(a_Position.x, a_Position.y, a_Position.z, 1.0);
-			color = a_Color;
+			color = vec4(1,1,1,1);
 		}
 	)";
 
@@ -86,8 +86,7 @@ namespace Blaze
 			buffer->UploadData(&vertices);
 
 			BufferLayout layout = {
-				{ ShaderDataType::Float3, "a_Position" },
-				{ ShaderDataType::Float4, "a_Color" }
+				{ ShaderDataType::Float3, "a_Position" }
 			};
 
 			buffer->SetLayout(&layout);
@@ -117,7 +116,7 @@ namespace Blaze
 			attrib->Bind();
 
 			shader->Bind();
-			OpenGLImpl::DrawTriangleWithElements();
+			OpenGLImpl::DrawTriangleWithElements(attrib->GetElementBuffer()->GetCount());
 			shader->UnBind();
 		}
 	}

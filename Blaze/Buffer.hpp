@@ -153,11 +153,15 @@ namespace Blaze
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
+		const std::vector<float>* GetData() { return m_Data; }
+		int GetCount() { return m_Data->size(); }
+
 		const BufferLayout* GetLayout() const { return m_Layout; }
 		void SetLayout(BufferLayout* layout) { m_Layout = layout; }
 
 	private:
 		BufferLayout* m_Layout;
+		const std::vector<float>* m_Data;
 	};
 
 	class BLAZE_API ElementBuffer : public Buffer
@@ -169,9 +173,15 @@ namespace Blaze
 		virtual void Create() override;
 
 		void UploadData(const std::vector<int>* data);
+		int GetCount() { return m_Data->size(); }
+
+		const std::vector<int>* GetData() { return m_Data; }
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
+
+	private:
+		const std::vector<int>* m_Data;
 	};
 
 	class BLAZE_API FrameBuffer : public Buffer
@@ -202,6 +212,9 @@ namespace Blaze
 
 		void AddVertexBuffer(VertexBuffer* vertexBuffer);
 		void SetElementBuffer(ElementBuffer* elementBuffer);
+
+		std::vector<VertexBuffer*> GetVertexBuffers() { return m_VertexBuffers; }
+		ElementBuffer* GetElementBuffer() { return m_ElementBuffer; }
 
 		static void Enable(int indeex);
 		static void Disable(int index);

@@ -36,6 +36,8 @@ namespace Blaze
 			Bind();
 			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data->data(), GL_STATIC_DRAW);
 		}
+
+		m_Data = data;
 	}
 
 	void VertexBuffer::Bind() const
@@ -85,6 +87,8 @@ namespace Blaze
 			Bind();
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(int), data->data(), GL_STATIC_DRAW);
 		}
+
+		m_Data = data;
 	}
 
 	void ElementBuffer::Bind() const

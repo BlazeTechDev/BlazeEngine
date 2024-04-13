@@ -145,14 +145,14 @@ namespace Blaze
 		glfwDestroyWindow(m_Window);
 	}
 
-	void OpenGLImpl::DrawTriangleWithArrays()
+	void OpenGLImpl::DrawTriangleWithArrays(int count)
 	{
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, count);
 	}
 
-	void OpenGLImpl::DrawTriangleWithElements()
+	void OpenGLImpl::DrawTriangleWithElements(int count)
 	{
-		glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (void*)0);
+		glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, (void*)0);
 	}
 
 	int OpenGLImpl::GetOpenGLDataType(BlazeDataType type)
