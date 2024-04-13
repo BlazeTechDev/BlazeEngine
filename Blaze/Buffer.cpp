@@ -10,7 +10,7 @@ namespace Blaze
 {
 	VertexBuffer::VertexBuffer() : Buffer()
 	{
-		
+		m_Layout = nullptr;
 	}
 
 	VertexBuffer::~VertexBuffer()
@@ -33,6 +33,7 @@ namespace Blaze
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
+			Bind();
 			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data->data(), GL_STATIC_DRAW);
 		}
 	}
@@ -81,6 +82,7 @@ namespace Blaze
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
+			Bind();
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(int), data->data(), GL_STATIC_DRAW);
 		}
 	}
@@ -151,6 +153,11 @@ namespace Blaze
 		}
 	}
 
+	AttributeArray::AttributeArray()
+	{
+		m_Id = 0;
+	}
+
 	void AttributeArray::Create()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
@@ -183,15 +190,34 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::CompileLayouts()
+	void AttributeArray::AddVertexBuffer(VertexBuffer* vertexBuffer)
 	{
-		int index = 0;
-
-		for (BufferElement element : m_Layout->GetElements())
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
-			Enable(index);
-			CreateAttributePointer(index, element.GetElementCount(), ShaderDataTypeToBlazeDataType(element.Type), element.Normalized, m_Layout->GetStride(), element.Offset);
-			index++;
+			Bind();
+			vertexBuffer->Bind();
+
+			uint32_t index = 0;
+			const BufferLayout* layout = vertexBuffer->GetLayout();
+			for (const BufferElement element : layout->GetElements())
+			{
+				Enable(index);
+				CreateAttributePointer(index, element.GetElementCount(), ShaderDataTypeToBlazeDataType(element.Type), element.Normalized, layout->GetStride(), element.Offset);
+				index++;
+			}
+
+			m_VertexBuffers.push_back(vertexBuffer);
+		}
+	}
+
+	void AttributeArray::SetElementBuffer(ElementBuffer* elementBuffer)
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			Bind();
+			elementBuffer->Bind();
+
+			m_ElementBuffer = elementBuffer;
 		}
 	}
 

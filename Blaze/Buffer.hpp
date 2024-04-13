@@ -122,33 +122,6 @@ namespace Blaze
 		std::vector<BufferElement> m_Elements;
 		uint32_t m_Stride;
 	};
-	
-	class BLAZE_API AttributeArray
-	{
-	public:
-		AttributeArray() { m_Id = 0; m_Layout = nullptr; }
-
-		void Create();
-
-		void CreateAttributePointer(int index, int size, BlazeDataType data_type, bool normalized, uint32_t stride, uint32_t offset);
-
-		void Bind() const;
-		void UnBind() const;
-
-		const BufferLayout* GetLayout() const { return m_Layout; }
-		void SetLayout(BufferLayout* layout) { m_Layout = layout; }
-
-		void CompileLayouts();
-
-		void Enable(int indeex);
-		void Disable(int index);
-
-		unsigned int GetID() { return m_Id; }
-
-	private:
-		BufferLayout* m_Layout;
-		unsigned int m_Id;
-	};
 
 	class BLAZE_API Buffer
 	{
@@ -179,6 +152,12 @@ namespace Blaze
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
+
+		const BufferLayout* GetLayout() const { return m_Layout; }
+		void SetLayout(BufferLayout* layout) { m_Layout = layout; }
+
+	private:
+		BufferLayout* m_Layout;
 	};
 
 	class BLAZE_API ElementBuffer : public Buffer
@@ -207,5 +186,32 @@ namespace Blaze
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
+	};
+
+	class BLAZE_API AttributeArray
+	{
+	public:
+		AttributeArray();
+
+		void Create();
+
+		static void CreateAttributePointer(int index, int size, BlazeDataType data_type, bool normalized, uint32_t stride, uint32_t offset);
+
+		void Bind() const;
+		void UnBind() const;
+
+		void AddVertexBuffer(VertexBuffer* vertexBuffer);
+		void SetElementBuffer(ElementBuffer* elementBuffer);
+
+		static void Enable(int indeex);
+		static void Disable(int index);
+
+		unsigned int GetID() { return m_Id; }
+
+	private:
+		std::vector<VertexBuffer*> m_VertexBuffers;
+		ElementBuffer* m_ElementBuffer;
+
+		unsigned int m_Id;
 	};
 }

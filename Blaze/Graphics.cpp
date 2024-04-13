@@ -80,11 +80,9 @@ namespace Blaze
 
 			attrib = new AttributeArray();
 			attrib->Create();
-			attrib->Bind();
 
 			buffer = new VertexBuffer();
 			buffer->Create();
-			buffer->Bind();
 			buffer->UploadData(&vertices);
 
 			BufferLayout layout = {
@@ -92,13 +90,13 @@ namespace Blaze
 				{ ShaderDataType::Float4, "a_Color" }
 			};
 
-			attrib->SetLayout(&layout);
-			attrib->CompileLayouts();
+			buffer->SetLayout(&layout);
+			attrib->AddVertexBuffer(buffer);
 
 			e_buffer = new ElementBuffer();
 			e_buffer->Create();
-			e_buffer->Bind();
 			e_buffer->UploadData(&indices);
+			attrib->SetElementBuffer(e_buffer);
 		}
 	}
 
