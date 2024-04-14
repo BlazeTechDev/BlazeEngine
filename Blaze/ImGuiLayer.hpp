@@ -7,7 +7,7 @@
 #include "MouseEvent.hpp"
 #include "KeyEvent.hpp"
 #include "WindowEvent.hpp"
-
+#include "Time.hpp"
 
 namespace Blaze
 {
@@ -25,14 +25,14 @@ namespace Blaze
 	{
 	public:
 		ImGuiLayer();
-		~ImGuiLayer();
+		virtual ~ImGuiLayer() override;
 		
 		static ImGuiKey GLFWKeyToImGuiKey(int key);
 		static ImGuiKey GLFWMouseButtonToImGuiKey(int button);
-		void OnAttach();
-		void OnDetach();
-		void OnUpdate();
-		void OnEvent(Event& event);
+		virtual void OnAttach() override;
+		virtual void OnDetach() override;
+		virtual void OnUpdate(Timestep timeStep) override;
+		virtual void OnEvent(Event& event) override;
 
 		void PushEditorWindow(EditorWindow* editorWindow);
 		void PopEditorWindow(EditorWindow* editorWindow);

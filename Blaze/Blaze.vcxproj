@@ -181,6 +181,8 @@
     <ClInclude Include="SceneViewport.hpp" />
     <ClInclude Include="Shader.hpp" />
     <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="Tick.hpp" />
+    <ClInclude Include="Time.hpp" />
     <ClInclude Include="Versions.hpp" />
     <ClInclude Include="Window.hpp" />
     <ClInclude Include="WindowEvent.hpp" />
@@ -206,6 +208,7 @@
     <ClCompile Include="SceneViewport.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Tick.cpp" />
     <ClCompile Include="WindowsWindow.cpp" />
     <ClCompile Include="blzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

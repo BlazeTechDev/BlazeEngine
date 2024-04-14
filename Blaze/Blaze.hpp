@@ -15,6 +15,8 @@
 #include "LayerStack.hpp"
 #include "Log.hpp"
 #include "Application.hpp"
+#include "Tick.hpp"
+#include "Time.hpp"
 
 //Graphics
 #include "Buffer.hpp"

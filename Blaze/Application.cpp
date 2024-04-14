@@ -6,7 +6,9 @@
 #include "WindowEvent.hpp"
 #include "Log.hpp"
 #include "Core.hpp"
+#include "Tick.hpp"
 
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 namespace Blaze
@@ -60,9 +62,20 @@ namespace Blaze
 	{
 		while (m_Running)
 		{
+			float time = glfwGetTime();
+			Timestep timeStep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
+			Tick::TickOnce(timeStep);
+
+			if (Tick::IsTickFrame())
+			{
+				BLZ_CORE_WARN("Tick: {0} Time: {1}", Tick::GetTick(), Tick::GetTickTime());
+			}
+
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timeStep);
 			}
 
 			m_Window->OnUpdate();

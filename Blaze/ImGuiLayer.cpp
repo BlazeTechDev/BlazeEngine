@@ -169,7 +169,7 @@ namespace Blaze
         }
 	}
 
-	void ImGuiLayer::OnUpdate()
+	void ImGuiLayer::OnUpdate(Timestep timeStep)
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();

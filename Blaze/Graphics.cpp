@@ -99,10 +99,6 @@ namespace Blaze
 			e_buffer->Create();
 			e_buffer->UploadData(indices);
 			attrib->SetIndexBuffer(*e_buffer);
-
-			DrawCallData data = { attrib, shader };
-
-			Submit(data);
 		}
 	}
 
@@ -119,28 +115,30 @@ namespace Blaze
 	{
 		m_ViewportFrameBuffer->Bind();
 
-		if (m_ActiveCamera) {
-			BeginScene(m_ActiveCamera->GetGraphicalData());
-			if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		BeginScene(m_ActiveCamera->GetGraphicalData());
+
+		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
+		{
+			OpenGLImpl::OpenGLPreRenderFrameClear();
+
+			for (DrawCallData drawCallData : m_DrawQueue)
 			{
-				OpenGLImpl::OpenGLPreRenderFrameClear();
+				drawCallData.vertexArray->Bind();
 
-				for (DrawCallData drawCallData : m_DrawQueue)
-				{
-					drawCallData.vertexArray->Bind();
-
-					drawCallData.shader->Bind();
-					drawCallData.shader->UploadUniformMatrix("u_ViewProjection", m_CurrentViewProjectionMatrix);
-					OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer().GetCount());
-					drawCallData.shader->UnBind();
-				}
-
-				OpenGLImpl::OpenGLPostRenderBufferSwap();
+				drawCallData.shader->Bind();
+				drawCallData.shader->UploadUniformMatrix("u_ViewProjection", m_CurrentViewProjectionMatrix);
+				OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer().GetCount());
+				drawCallData.shader->UnBind();
 			}
-			EndScene();
+
+			OpenGLImpl::OpenGLPostRenderBufferSwap();
 		}
 
+		EndScene();
+
 		m_ViewportFrameBuffer->UnBind();
+
+		m_DrawQueue.clear();
 	}
 
 	void Graphics::BeginScene(CameraGraphicalData& camera_data)

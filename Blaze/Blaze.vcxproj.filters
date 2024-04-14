@@ -90,6 +90,12 @@
     <ClInclude Include="Camera.hpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClInclude>
+    <ClInclude Include="Tick.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.hpp">
+      <Filter>src\Blaze\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -150,6 +156,9 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Camera.cpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Tick.cpp">
+      <Filter>src\Blaze\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

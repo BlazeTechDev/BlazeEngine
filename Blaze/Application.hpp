@@ -6,6 +6,7 @@
 #include "Window.hpp"
 #include "WindowEvent.hpp"
 #include "Graphics.hpp"
+#include "Time.hpp"
 
 namespace Blaze
 {
@@ -30,6 +31,7 @@ namespace Blaze
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
 		Graphics* m_Graphics;
 

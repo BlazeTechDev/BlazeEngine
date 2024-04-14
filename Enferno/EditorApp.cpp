@@ -5,7 +5,7 @@ class EditorLayer : public Blaze::Layer
 public:
 	EditorLayer(Blaze::ImGuiLayer* imGuiLayer) : Layer("Editor"), s_ImGuiLayer(imGuiLayer) {};
 
-	void OnAttach() override
+	virtual void OnAttach() override
 	{
 		s_ImGuiLayer->PushEditorWindow(new Blaze::ConsoleWindow());
 		s_ImGuiLayer->PushEditorWindow(new Blaze::SceneViewport());
@@ -15,12 +15,12 @@ public:
 		Blaze::Graphics::Get()->SetActiveCamera(new Blaze::Camera());
 	}
 
-	void OnUpdate() override
+	virtual void OnUpdate(Blaze::Timestep timeStep) override
 	{
 
 	}
 	
-	void OnEvent(Blaze::Event& event) override
+	virtual void OnEvent(Blaze::Event& event) override
 	{
 
 	}
