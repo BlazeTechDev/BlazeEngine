@@ -129,10 +129,16 @@ namespace Blaze
 		return m_Window;
 	}
 
-	void OpenGLImpl::OpenGLPreRenderBufferSwap()
+	void OpenGLImpl::OpenGLPostRenderBufferSwap()
 	{
 		glfwSwapBuffers(m_Window);
 		glfwPollEvents();
+	}
+
+	void OpenGLImpl::OpenGLPreRenderFrameClear()
+	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(0.7f, 0.3f, 0.3f, 1);
 	}
 
 	void OpenGLImpl::OpenGLSetVSync(bool enabled)

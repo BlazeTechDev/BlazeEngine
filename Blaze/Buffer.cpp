@@ -10,11 +10,6 @@
 
 namespace Blaze
 {
-	VertexBuffer::VertexBuffer() : Buffer()
-	{
-		m_Layout = nullptr;
-	}
-
 	VertexBuffer::~VertexBuffer()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
@@ -31,12 +26,12 @@ namespace Blaze
 		}
 	}
 
-	void VertexBuffer::UploadData(const std::vector<float>* data)
+	void VertexBuffer::UploadData(const std::vector<float>& data)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			Bind();
-			glBufferData(GL_ARRAY_BUFFER, data->size() * sizeof(float), data->data(), GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
 		}
 
 		m_Data = data;
@@ -58,14 +53,6 @@ namespace Blaze
 		}
 	}
 
-	IndexBuffer::IndexBuffer() : Buffer()
-	{
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			glGenBuffers(1, &m_Id);
-		}
-	}
-
 	IndexBuffer::~IndexBuffer()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
@@ -82,12 +69,12 @@ namespace Blaze
 		}
 	}
 
-	void IndexBuffer::UploadData(const std::vector<int>* data)
+	void IndexBuffer::UploadData(const std::vector<int>& data)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			Bind();
-			glBufferData(GL_ELEMENT_ARRAY_BUFFER, data->size() * sizeof(int), data->data(), GL_STATIC_DRAW);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, data.size() * sizeof(int), data.data(), GL_STATIC_DRAW);
 		}
 
 		m_Data = data;
@@ -146,19 +133,19 @@ namespace Blaze
 		}
 	}
 
-	void VertexArray::AddVertexBuffer(VertexBuffer* vertexBuffer)
+	void VertexArray::AddVertexBuffer(VertexBuffer& vertexBuffer)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			Bind();
-			vertexBuffer->Bind();
+			vertexBuffer.Bind();
 
 			uint32_t index = 0;
-			const BufferLayout* layout = vertexBuffer->GetLayout();
-			for (const BufferElement element : layout->GetElements())
+			const BufferLayout& layout = vertexBuffer.GetLayout();
+			for (const BufferElement element : layout.GetElements())
 			{
 				Enable(index);
-				CreateAttributePointer(index, element.GetElementCount(), ShaderDataTypeToBlazeDataType(element.Type), element.Normalized, layout->GetStride(), element.Offset);
+				CreateAttributePointer(index, element.GetElementCount(), ShaderDataTypeToBlazeDataType(element.Type), element.Normalized, layout.GetStride(), element.Offset);
 				index++;
 			}
 
@@ -166,12 +153,12 @@ namespace Blaze
 		}
 	}
 
-	void VertexArray::SetIndexBuffer(IndexBuffer* IndexBuffer)
+	void VertexArray::SetIndexBuffer(IndexBuffer& IndexBuffer)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			Bind();
-			IndexBuffer->Bind();
+			IndexBuffer.Bind();
 
 			m_IndexBuffer = IndexBuffer;
 		}
@@ -190,6 +177,57 @@ namespace Blaze
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			glDisableVertexAttribArray(index);
+		}
+	}
+	
+	FrameBuffer::~FrameBuffer()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glDeleteFramebuffers(1, &m_Id);
+		}
+	}
+
+	void FrameBuffer::Bind() const
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, m_Id);
+		}
+	}
+
+	void FrameBuffer::UnBind() const
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
+	}
+	
+	void FrameBuffer::Invalidate()
+	{
+		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
+		{
+			glCreateFramebuffers(1, &m_Id);
+			Bind();
+
+			glCreateTextures(GL_TEXTURE_2D, 1, &m_ColorAttachment);
+			glBindTexture(GL_TEXTURE_2D, m_ColorAttachment);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, m_Specs.Width, m_Specs.Height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_ColorAttachment, 0);
+
+			glCreateTextures(GL_TEXTURE_2D, 1, &m_DepthAttachment);
+			glBindTexture(GL_TEXTURE_2D, m_DepthAttachment);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, m_Specs.Width, m_Specs.Height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, nullptr);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+			BLZ_CORE_ASSERT(glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE, "FrameBuffer is incomplete");
+
+			UnBind();
 		}
 	}
 }

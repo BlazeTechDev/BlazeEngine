@@ -73,8 +73,11 @@ namespace Blaze
 		{
 			s_Window = OpenGLImpl::InitializeOpenGL(window);
 
-			WindowsWindow* app_window = (WindowsWindow*)window;
-			app_window->m_Window = s_Window;
+			WindowsWindow* AppWindow = (WindowsWindow*)window;
+			AppWindow->m_Window = s_Window;
+
+			m_ViewportFrameBuffer = new FrameBuffer({ AppWindow->GetWidth(), AppWindow->GetHeight(), 1});
+			m_ViewportFrameBuffer->Invalidate();
 
 			shader = new Shader(vertexSource, fragmentSource); 
 
@@ -83,19 +86,19 @@ namespace Blaze
 
 			buffer = new VertexBuffer();
 			buffer->Create();
-			buffer->UploadData(&vertices);
+			buffer->UploadData(vertices);
 
 			BufferLayout layout = {
 				{ ShaderDataType::Float3, "a_Position" }
 			};
 
-			buffer->SetLayout(&layout);
-			attrib->AddVertexBuffer(buffer);
+			buffer->SetLayout(layout);
+			attrib->AddVertexBuffer(*buffer);
 
 			e_buffer = new IndexBuffer();
 			e_buffer->Create();
-			e_buffer->UploadData(&indices);
-			attrib->SetIndexBuffer(e_buffer);
+			e_buffer->UploadData(indices);
+			attrib->SetIndexBuffer(*e_buffer);
 
 			DrawCallData data = { attrib, shader };
 
@@ -114,20 +117,25 @@ namespace Blaze
 
 	void Graphics::Update()
 	{
+		m_ViewportFrameBuffer->Bind();
 		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
 		{
+			OpenGLImpl::OpenGLPreRenderFrameClear();
+
 			for (DrawCallData drawCallData : m_DrawQueue)
 			{
-				OpenGLImpl::OpenGLPreRenderBufferSwap();
 				drawCallData.vertexArray->Bind();
 
 				drawCallData.shader->UploadUniformMatrix("u_View", m_CurrentViewMatrix);
 
 				drawCallData.shader->Bind();
-				OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer()->GetCount());
+				OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer().GetCount());
 				drawCallData.shader->UnBind();
 			}
+
+			OpenGLImpl::OpenGLPostRenderBufferSwap();
 		}
+		m_ViewportFrameBuffer->UnBind();
 	}
 
 	void Graphics::BeginScene(CameraGraphicalData camera_data)

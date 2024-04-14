@@ -15,6 +15,14 @@ namespace Blaze
 		BLZ_BOOL
 	};
 
+	struct BLAZE_API FrameBufferSpecifications
+	{
+		uint32_t Width = 800;
+		uint32_t Height = 600;
+		uint32_t Samples = 1;
+		bool SwapChainDev = false;
+	};
+
 	static uint32_t ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)
@@ -144,45 +152,45 @@ namespace Blaze
 	class BLAZE_API VertexBuffer : public Buffer
 	{
 	public:
-		VertexBuffer();
+		VertexBuffer() : Buffer() { m_Id = 0; }
 		~VertexBuffer();
 
 		virtual void Create() override;
 
-		void UploadData(const std::vector<float>* data);
+		void UploadData(const std::vector<float>& data);
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
-		const std::vector<float>* GetData() { return m_Data; }
-		int GetCount() { return m_Data->size(); }
+		const std::vector<float>& GetData() { return m_Data; }
+		int GetCount() { return m_Data.size(); }
 
-		const BufferLayout* GetLayout() const { return m_Layout; }
-		void SetLayout(BufferLayout* layout) { m_Layout = layout; }
+		const BufferLayout& GetLayout() const { return m_Layout; }
+		void SetLayout(BufferLayout& layout) { m_Layout = layout; }
 
 	private:
-		BufferLayout* m_Layout;
-		const std::vector<float>* m_Data;
+		BufferLayout m_Layout = {};
+		std::vector<float> m_Data;
 	};
 
 	class BLAZE_API IndexBuffer : public Buffer
 	{
 	public:
-		IndexBuffer();
+		IndexBuffer() : Buffer() { m_Id = 0; };
 		~IndexBuffer();
 
 		virtual void Create() override;
 
-		void UploadData(const std::vector<int>* data);
-		int GetCount() { return m_Data->size(); }
+		void UploadData(const std::vector<int>& data);
+		int GetCount() { return m_Data.size(); }
 
-		const std::vector<int>* GetData() { return m_Data; }
+		const std::vector<int>& GetData() { return m_Data; }
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
 
 	private:
-		const std::vector<int>* m_Data;
+		std::vector<int> m_Data;
 	};
 
 	class BLAZE_API VertexArray
@@ -197,11 +205,11 @@ namespace Blaze
 		void Bind() const;
 		void UnBind() const;
 
-		void AddVertexBuffer(VertexBuffer* vertexBuffer);
-		void SetIndexBuffer(IndexBuffer* IndexBuffer);
+		void AddVertexBuffer(VertexBuffer& vertexBuffer);
+		void SetIndexBuffer(IndexBuffer& IndexBuffer);
 
-		std::vector<VertexBuffer*> GetVertexBuffers() { return m_VertexBuffers; }
-		IndexBuffer* GetIndexBuffer() { return m_IndexBuffer; }
+		std::vector<VertexBuffer>& GetVertexBuffers() { return m_VertexBuffers; }
+		IndexBuffer& GetIndexBuffer() { return m_IndexBuffer; }
 
 		static void Enable(int indeex);
 		static void Disable(int index);
@@ -209,9 +217,31 @@ namespace Blaze
 		unsigned int GetID() { return m_Id; }
 
 	private:
-		std::vector<VertexBuffer*> m_VertexBuffers;
-		IndexBuffer* m_IndexBuffer;
+		std::vector<VertexBuffer> m_VertexBuffers;
+		IndexBuffer m_IndexBuffer;
 
 		unsigned int m_Id;
+	};
+
+	class BLAZE_API FrameBuffer : public Buffer
+	{
+	public:
+		FrameBuffer(const FrameBufferSpecifications& specs) : Buffer(), m_Specs(specs) { m_Id = 0; }
+		~FrameBuffer();
+
+		virtual void Bind() const override;
+		virtual void UnBind() const override;
+
+		unsigned int GetColorAttachment() { return m_ColorAttachment; }
+		unsigned int GetDepthAttachment() { return m_DepthAttachment; }
+
+		const FrameBufferSpecifications& GetSpecifications() { return m_Specs; }
+
+		void Invalidate();
+
+	private:
+		unsigned int m_ColorAttachment;
+		unsigned int m_DepthAttachment;
+		FrameBufferSpecifications m_Specs;
 	};
 }

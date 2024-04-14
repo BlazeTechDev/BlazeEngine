@@ -49,6 +49,8 @@ namespace Blaze
 
 		const GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
 
+		FrameBuffer* GetViewportFrameBuffer() { return m_ViewportFrameBuffer; }
+
 		static Graphics* Get() { return s_Instance; }
 		
 	private:
@@ -56,6 +58,8 @@ namespace Blaze
 		const static GraphicsAPIType m_EngineGraphicsAPI = GraphicsAPIType::OpenGL;
 
 		static Graphics* s_Instance;
+
+		FrameBuffer* m_ViewportFrameBuffer;
 
 		std::vector<DrawCallData> m_DrawQueue;
 

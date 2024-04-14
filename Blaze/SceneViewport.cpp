@@ -1,6 +1,7 @@
 #include "blzpch.hpp"
 #include "SceneViewport.hpp"
 
+#include "Graphics.hpp"
 #include <imgui.h>
 
 namespace Blaze
@@ -12,7 +13,11 @@ namespace Blaze
 
 	void SceneViewport::Draw()
 	{
-		ImGui::Begin("Scene Viewport");
+		if (ImGui::Begin("Scene Viewport"))
+		{
+			FrameBuffer* ViewportFrameBuffer = Graphics::Get()->GetViewportFrameBuffer();
+			ImGui::Image((void*)ViewportFrameBuffer->GetColorAttachment(), ImGui::GetWindowSize());
+		}
 		ImGui::End();
 	}
 }

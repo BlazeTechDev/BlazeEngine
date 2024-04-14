@@ -11,7 +11,8 @@ namespace Blaze
 	{
 	public:
 		static GLFWwindow* InitializeOpenGL(Window* window);
-		static void OpenGLPreRenderBufferSwap();
+		static void OpenGLPostRenderBufferSwap();
+		static void OpenGLPreRenderFrameClear();
 
 		static void OpenGLSetVSync(bool enabled);
 
