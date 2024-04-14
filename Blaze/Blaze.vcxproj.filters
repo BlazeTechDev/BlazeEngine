@@ -85,6 +85,11 @@
     <ClInclude Include="Shader.hpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClInclude>
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Entity.hpp" />
+    <ClInclude Include="Camera.hpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blzpch.cpp">
@@ -139,6 +144,11 @@
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
+      <Filter>src\Blaze\Graphics\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Camera.cpp">
       <Filter>src\Blaze\Graphics\Types</Filter>
     </ClCompile>
   </ItemGroup>

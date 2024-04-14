@@ -16,7 +16,7 @@ namespace Blaze
 		if (ImGui::Begin("Scene Viewport"))
 		{
 			FrameBuffer* ViewportFrameBuffer = Graphics::Get()->GetViewportFrameBuffer();
-			ImGui::Image((void*)ViewportFrameBuffer->GetColorAttachment(), ImGui::GetWindowSize());
+			ImGui::Image((void*)ViewportFrameBuffer->GetColorAttachment(), ImVec2(ImGui::GetWindowWidth(), ImGui::GetWindowHeight() - 25));
 		}
 		ImGui::End();
 	}

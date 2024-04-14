@@ -11,6 +11,8 @@ public:
 		s_ImGuiLayer->PushEditorWindow(new Blaze::SceneViewport());
 		s_ImGuiLayer->PushEditorWindow(new Blaze::PropertiesWindow());
 		s_ImGuiLayer->PushEditorWindow(new Blaze::CollectionWindow());
+
+		Blaze::Graphics::Get()->SetActiveCamera(new Blaze::Camera());
 	}
 
 	void OnUpdate() override

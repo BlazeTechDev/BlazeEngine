@@ -22,6 +22,7 @@
 #include "Graphics.hpp"
 #include "Shader.hpp"
 #include "Texture.hpp"
+#include "Camera.hpp"
 
 //Collection and ECS
 #include "Collection.hpp"

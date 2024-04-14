@@ -13,6 +13,7 @@
 #ifdef BLZ_ENABLE_ASSERTIONS
 	#define BLZ_CLIENT_ASSERT(x, ...) { if(!(x)) { BLZ_CLIENT_ERROR("assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define BLZ_CORE_ASSERT(x, ...) { if(!(x)) { BLZ_CORE_ERROR("assertion failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define BLZ_CORE_CHECK_AND_RETURN(x) { if(!(x)) { return; }}
 #else
 	#define BLZ_CLIENT_ASSERT(x, ...)
 	#define BLZ_CORE_ASSERT(x, ...)

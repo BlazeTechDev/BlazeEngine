@@ -30,13 +30,13 @@ namespace Blaze
 		layout (location = 0) in vec3 a_Position;
 		layout (location = 1) in vec2 a_UV;
 
-		uniform mat4 u_View;
+		uniform mat4 u_ViewProjection;
 
 		out vec4 color;
 
 		void main()
 		{
-			gl_Position = vec4(a_Position.x, a_Position.y, a_Position.z, 1.0);
+			gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
 			color = vec4(1,1,1,1);
 		}
 	)";
@@ -118,35 +118,43 @@ namespace Blaze
 	void Graphics::Update()
 	{
 		m_ViewportFrameBuffer->Bind();
-		if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
-		{
-			OpenGLImpl::OpenGLPreRenderFrameClear();
 
-			for (DrawCallData drawCallData : m_DrawQueue)
+		if (m_ActiveCamera) {
+			BeginScene(m_ActiveCamera->GetGraphicalData());
+			if (m_EngineGraphicsAPI == GraphicsAPIType::OpenGL)
 			{
-				drawCallData.vertexArray->Bind();
+				OpenGLImpl::OpenGLPreRenderFrameClear();
 
-				drawCallData.shader->UploadUniformMatrix("u_View", m_CurrentViewMatrix);
+				for (DrawCallData drawCallData : m_DrawQueue)
+				{
+					drawCallData.vertexArray->Bind();
 
-				drawCallData.shader->Bind();
-				OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer().GetCount());
-				drawCallData.shader->UnBind();
+					drawCallData.shader->Bind();
+					drawCallData.shader->UploadUniformMatrix("u_ViewProjection", m_CurrentViewProjectionMatrix);
+					OpenGLImpl::DrawTriangleWithElements(drawCallData.vertexArray->GetIndexBuffer().GetCount());
+					drawCallData.shader->UnBind();
+				}
+
+				OpenGLImpl::OpenGLPostRenderBufferSwap();
 			}
-
-			OpenGLImpl::OpenGLPostRenderBufferSwap();
+			EndScene();
 		}
+
 		m_ViewportFrameBuffer->UnBind();
 	}
 
-	void Graphics::BeginScene(CameraGraphicalData camera_data)
+	void Graphics::BeginScene(CameraGraphicalData& camera_data)
 	{
-		glm::mat4 viewMatrix = glm::mat4(1.0f);
-		viewMatrix = glm::translate(viewMatrix, camera_data.position);
-		viewMatrix = glm::rotate(viewMatrix, camera_data.rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-		viewMatrix = glm::rotate(viewMatrix, camera_data.rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-		viewMatrix = glm::rotate(viewMatrix, camera_data.rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+		m_CurrentViewMatrix = glm::mat4(1.0f);
+		m_CurrentViewMatrix = glm::translate(m_CurrentViewMatrix, camera_data.position)
+			* glm::rotate(m_CurrentViewMatrix, camera_data.rotation.x, glm::vec3(1.0f, 0.0f, 0.0f))
+			* glm::rotate(m_CurrentViewMatrix, camera_data.rotation.y, glm::vec3(0.0f, 1.0f, 0.0f))
+			* glm::rotate(m_CurrentViewMatrix, camera_data.rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
 
-		m_CurrentViewMatrix = viewMatrix;
+		m_CurrentProjectionMatrix = glm::mat4(1.0f);
+		m_CurrentProjectionMatrix = glm::ortho(-1, 1, -1, 1);
+
+		m_CurrentViewProjectionMatrix = m_CurrentProjectionMatrix * m_CurrentViewMatrix;
 	}
 
 	void Graphics::Submit(DrawCallData drawCallData)

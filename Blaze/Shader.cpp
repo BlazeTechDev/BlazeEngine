@@ -4,6 +4,7 @@
 #include "Graphics.hpp"
 #include "OpenGLImpl.hpp"
 
+#include <gtc/type_ptr.hpp>
 #include <glad/glad.h>
 
 namespace Blaze
@@ -40,9 +41,9 @@ namespace Blaze
 		}
 	}
 	
-	void Shader::UploadUniformMatrix(const char* variable_name, glm::mat4 value)
+	void Shader::UploadUniformMatrix(const char* variable_name, glm::mat4& value)
 	{
 		int location = glGetUniformLocation(m_Id, variable_name);
-		glUniformMatrix4fv(location, 1, GL_FALSE, &value[0][0]);
+		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
 	}
 }

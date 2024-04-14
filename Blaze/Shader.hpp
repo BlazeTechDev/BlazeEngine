@@ -40,7 +40,7 @@ namespace Blaze
 		void UploadUniformFloat(const char* variable_name, float value) {};
 		void UploadUniformInt() {};
 		void UploadUniformDouble() {};
-		void UploadUniformMatrix(const char* variable_name, glm::mat4 value);
+		void UploadUniformMatrix(const char* variable_name, glm::mat4& value);
 
 	protected:
 		unsigned int m_Id;

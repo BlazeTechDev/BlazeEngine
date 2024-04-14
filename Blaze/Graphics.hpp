@@ -3,6 +3,7 @@
 #include "Core.hpp"
 #include "Window.hpp"
 #include "Buffer.hpp"
+#include "Camera.hpp"
 
 #include <glm.hpp>
 
@@ -14,12 +15,6 @@ namespace Blaze
 		Vulkan = 1,
 		Metal = 2,
 		DirectX = 3
-	};
-
-	struct BLAZE_API CameraGraphicalData
-	{
-		glm::vec3 position;
-		glm::vec3 rotation;
 	};
 
 	struct BLAZE_API DrawCallData
@@ -40,12 +35,15 @@ namespace Blaze
 		void Update();
 
 		//scene rendering functions
-		void BeginScene(CameraGraphicalData camera_data);
+		void BeginScene(CameraGraphicalData& camera_data);
 		void Submit(DrawCallData drawCallData);
 		void EndScene();
 		void Flush();
 
 		void SetVSync(bool enabled);
+
+		void SetActiveCamera(Camera* camera) { m_ActiveCamera = camera; }
+		Camera* GetActiveCamera() { return m_ActiveCamera; }
 
 		const GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
 
@@ -61,9 +59,12 @@ namespace Blaze
 
 		FrameBuffer* m_ViewportFrameBuffer;
 
+		Camera* m_ActiveCamera;
+
 		std::vector<DrawCallData> m_DrawQueue;
 
 		glm::mat4 m_CurrentViewMatrix;
 		glm::mat4 m_CurrentProjectionMatrix;
+		glm::mat4 m_CurrentViewProjectionMatrix;
 	};
 }
