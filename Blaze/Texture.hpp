@@ -7,14 +7,24 @@ namespace Blaze
 	class BLAZE_API Texture
 	{
 	public:
-		void Create() {};
+		~Texture();
 
-		void Bind() {};
-		void UnBind() {};
+		void Create(const int width, const int height);
+
+		void Bind();
+		void UnBind();
+
+		int GetWidth() { return m_Width; }
+		int GetHeight() { return m_Height; }
+		int GetChannels() { return m_Channels; }
 
 		unsigned int GetID() { return m_Id; }
 
 	protected:
 		unsigned int m_Id;
+
+		int m_Width;
+		int m_Height;
+		int m_Channels;
 	};
 }

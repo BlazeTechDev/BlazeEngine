@@ -4,6 +4,8 @@
 #include "Window.hpp"
 #include "Buffer.hpp"
 
+#include <glm.hpp>
+
 namespace Blaze
 {
 	enum BLAZE_API GraphicsAPIType
@@ -14,6 +16,20 @@ namespace Blaze
 		DirectX = 3
 	};
 
+	struct BLAZE_API CameraGraphicalData
+	{
+		glm::vec3 position;
+		glm::vec3 rotation;
+	};
+
+	struct BLAZE_API DrawCallData
+	{
+		VertexArray* vertexArray;
+		Shader* shader;
+
+		DrawCallData(VertexArray* passVertexArray, Shader* passShader) : vertexArray(passVertexArray), shader(passShader) {};
+	};
+
 	class BLAZE_API Graphics
 	{
 	public:
@@ -22,6 +38,12 @@ namespace Blaze
 		void Initialize(Window* window);
 		void Shutdown();
 		void Update();
+
+		//scene rendering functions
+		void BeginScene(CameraGraphicalData camera_data);
+		void Submit(DrawCallData drawCallData);
+		void EndScene();
+		void Flush();
 
 		void SetVSync(bool enabled);
 
@@ -40,5 +62,10 @@ namespace Blaze
 		const static GraphicsAPIType m_EngineGraphicsAPI = GraphicsAPIType::OpenGL;
 
 		static Graphics* s_Instance;
+
+		std::vector<DrawCallData> m_DrawQueue;
+
+		glm::mat4 m_CurrentViewMatrix;
+		glm::mat4 m_CurrentProjectionMatrix;
 	};
 }

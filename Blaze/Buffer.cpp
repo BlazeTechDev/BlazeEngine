@@ -56,7 +56,7 @@ namespace Blaze
 		}
 	}
 
-	ElementBuffer::ElementBuffer() : Buffer()
+	IndexBuffer::IndexBuffer() : Buffer()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -64,7 +64,7 @@ namespace Blaze
 		}
 	}
 
-	ElementBuffer::~ElementBuffer()
+	IndexBuffer::~IndexBuffer()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -72,7 +72,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::Create()
+	void IndexBuffer::Create()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -80,7 +80,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::UploadData(const std::vector<int>* data)
+	void IndexBuffer::UploadData(const std::vector<int>* data)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -91,7 +91,7 @@ namespace Blaze
 		m_Data = data;
 	}
 
-	void ElementBuffer::Bind() const
+	void IndexBuffer::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -99,7 +99,7 @@ namespace Blaze
 		}
 	}
 
-	void ElementBuffer::UnBind() const
+	void IndexBuffer::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -157,12 +157,12 @@ namespace Blaze
 		}
 	}
 
-	AttributeArray::AttributeArray()
+	VertexArray::VertexArray()
 	{
 		m_Id = 0;
 	}
 
-	void AttributeArray::Create()
+	void VertexArray::Create()
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -170,7 +170,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::CreateAttributePointer(int index, int size, BlazeDataType data_type, bool normalized, uint32_t stride, uint32_t offset)
+	void VertexArray::CreateAttributePointer(int index, int size, BlazeDataType data_type, bool normalized, uint32_t stride, uint32_t offset)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -178,7 +178,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::Bind() const
+	void VertexArray::Bind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -186,7 +186,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::UnBind() const
+	void VertexArray::UnBind() const
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -194,7 +194,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::AddVertexBuffer(VertexBuffer* vertexBuffer)
+	void VertexArray::AddVertexBuffer(VertexBuffer* vertexBuffer)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -214,18 +214,18 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::SetElementBuffer(ElementBuffer* elementBuffer)
+	void VertexArray::SetIndexBuffer(IndexBuffer* IndexBuffer)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			Bind();
-			elementBuffer->Bind();
+			IndexBuffer->Bind();
 
-			m_ElementBuffer = elementBuffer;
+			m_IndexBuffer = IndexBuffer;
 		}
 	}
 
-	void AttributeArray::Enable(int index)
+	void VertexArray::Enable(int index)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
@@ -233,7 +233,7 @@ namespace Blaze
 		}
 	}
 
-	void AttributeArray::Disable(int index)
+	void VertexArray::Disable(int index)
 	{
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{

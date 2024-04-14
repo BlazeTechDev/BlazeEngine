@@ -79,8 +79,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;..\vendor\glm\glm\gtc;..\vendor\glm\glm\gtx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -103,8 +103,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;..\vendor\glm\glm\gtc;..\vendor\glm\glm\gtx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -131,8 +131,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>blzpch.hpp</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_OPENGL_GRAPHICS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BLZ_PLATFORM_WINDOWS;BLZ_BUILD_DLL;BLZ_ENABLE_ASSERTIONS;GLFW_INCLUDE_NONE;_WINDLL;BLZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;..\vendor\ImGui;..\vendor\glm\glm;..\vendor\glm\glm\gtc;..\vendor\glm\glm\gtx;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -161,9 +161,11 @@
     <ClInclude Include="Buffer.hpp" />
     <ClInclude Include="Collection.hpp" />
     <ClInclude Include="CollectionWindow.hpp" />
+    <ClInclude Include="Component.hpp" />
     <ClInclude Include="ConsoleWindow.hpp" />
     <ClInclude Include="Core.hpp" />
     <ClInclude Include="EditorWindow.hpp" />
+    <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntryPoint.hpp" />
     <ClInclude Include="Event.hpp" />
     <ClInclude Include="Graphics.hpp" />
@@ -189,7 +191,9 @@
     <ClCompile Include="Buffer.cpp" />
     <ClCompile Include="Collection.cpp" />
     <ClCompile Include="CollectionWindow.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="ImGuiLayer.cpp" />
     <ClCompile Include="Layer.cpp" />

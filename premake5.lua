@@ -11,6 +11,8 @@ IncludeDir["GLFW"] = "Blaze/vendor/GLFW/include"
 IncludeDir["Glad"] = "Blaze/vendor/Glad/include"
 IncludeDir["ImGui"] = "vendor/ImGui"
 IncludeDir["glm"] = "vendor/glm/glm"
+IncludeDir["gtc"] = "vendor/glm/glm/gtc"
+IncludeDir["gtx"] = "vendor/glm/glm/gtx"
 
 include "Blaze/vendor/GLFW"
 include "Blaze/vendor/Glad"
@@ -40,7 +42,9 @@ project "Blaze"
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.gtc}",
+        "%{IncludeDir.gtx}"
     }
 
     links
@@ -110,7 +114,9 @@ project "Enferno"
         "Blaze/vendor/spdlog/include",
         "Blaze",
         "%{IncludeDir.ImGui}",
-        "%{IncludeDir.glm}"
+        "%{IncludeDir.glm}",
+        "%{IncludeDir.gtc}",
+        "%{IncludeDir.gtx}"
     }
 
     links

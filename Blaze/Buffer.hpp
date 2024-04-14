@@ -164,11 +164,11 @@ namespace Blaze
 		const std::vector<float>* m_Data;
 	};
 
-	class BLAZE_API ElementBuffer : public Buffer
+	class BLAZE_API IndexBuffer : public Buffer
 	{
 	public:
-		ElementBuffer();
-		~ElementBuffer();
+		IndexBuffer();
+		~IndexBuffer();
 
 		virtual void Create() override;
 
@@ -198,10 +198,10 @@ namespace Blaze
 		virtual void UnBind() const override;
 	};
 
-	class BLAZE_API AttributeArray
+	class BLAZE_API VertexArray
 	{
 	public:
-		AttributeArray();
+		VertexArray();
 
 		void Create();
 
@@ -211,10 +211,10 @@ namespace Blaze
 		void UnBind() const;
 
 		void AddVertexBuffer(VertexBuffer* vertexBuffer);
-		void SetElementBuffer(ElementBuffer* elementBuffer);
+		void SetIndexBuffer(IndexBuffer* IndexBuffer);
 
 		std::vector<VertexBuffer*> GetVertexBuffers() { return m_VertexBuffers; }
-		ElementBuffer* GetElementBuffer() { return m_ElementBuffer; }
+		IndexBuffer* GetIndexBuffer() { return m_IndexBuffer; }
 
 		static void Enable(int indeex);
 		static void Disable(int index);
@@ -223,7 +223,7 @@ namespace Blaze
 
 	private:
 		std::vector<VertexBuffer*> m_VertexBuffers;
-		ElementBuffer* m_ElementBuffer;
+		IndexBuffer* m_IndexBuffer;
 
 		unsigned int m_Id;
 	};
