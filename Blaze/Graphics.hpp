@@ -47,17 +47,11 @@ namespace Blaze
 
 		void SetVSync(bool enabled);
 
-		void BindSceneViewportFrameBuffer();
-		void UnBindSceneViewportFrameBuffer();
-
-		FrameBuffer* GetSceneViewportFrameBuffer() { return m_SceneViewportFrameBuffer; }
-
 		const GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
 
 		static Graphics* Get() { return s_Instance; }
 		
 	private:
-		FrameBuffer* m_SceneViewportFrameBuffer;
 		
 		const static GraphicsAPIType m_EngineGraphicsAPI = GraphicsAPIType::OpenGL;
 

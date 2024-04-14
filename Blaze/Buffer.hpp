@@ -185,25 +185,6 @@ namespace Blaze
 		const std::vector<int>* m_Data;
 	};
 
-	class BLAZE_API FrameBuffer : public Buffer
-	{
-	public:
-		FrameBuffer();
-		~FrameBuffer();
-
-		bool IsFrameBufferComplete();
-
-		virtual void Create() override;
-
-		virtual void Bind() const override;
-		virtual void UnBind() const override;
-
-		FrameBufferTexture* GetTexture() const { return m_Texture; }
-
-	private:
-		FrameBufferTexture* m_Texture;
-	};
-
 	class BLAZE_API VertexArray
 	{
 	public:

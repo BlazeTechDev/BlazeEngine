@@ -33,8 +33,6 @@ namespace Blaze
 
 	void Collection::DrawCollection()
 	{
-		Graphics::Get()->BindSceneViewportFrameBuffer();
 
-		Graphics::Get()->UnBindSceneViewportFrameBuffer();
 	}
 }

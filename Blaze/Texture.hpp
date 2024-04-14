@@ -27,10 +27,4 @@ namespace Blaze
 		int m_Height;
 		int m_Channels;
 	};
-
-	class BLAZE_API FrameBufferTexture : public Texture
-	{
-	public:
-		virtual void Create(const int width, const int height) override;
-	};
 }

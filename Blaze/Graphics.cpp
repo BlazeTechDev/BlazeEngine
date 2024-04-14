@@ -59,8 +59,6 @@ namespace Blaze
 
 	Graphics* Graphics::s_Instance = nullptr;
 
-	FrameBuffer* m_SceneViewportFrameBuffer = nullptr;
-
 	VertexArray* attrib = nullptr;
 
 	Graphics::Graphics()
@@ -77,9 +75,6 @@ namespace Blaze
 
 			WindowsWindow* app_window = (WindowsWindow*)window;
 			app_window->m_Window = s_Window;
-
-			m_SceneViewportFrameBuffer = new FrameBuffer();
-			m_SceneViewportFrameBuffer->Create();
 
 			shader = new Shader(vertexSource, fragmentSource); 
 
@@ -167,15 +162,5 @@ namespace Blaze
 		{
 			OpenGLImpl::OpenGLSetVSync(enabled);
 		}
-	}
-
-	void Graphics::BindSceneViewportFrameBuffer()
-	{
-		m_SceneViewportFrameBuffer->Bind();
-	}
-
-	void Graphics::UnBindSceneViewportFrameBuffer()
-	{
-		m_SceneViewportFrameBuffer->UnBind();
 	}
 }

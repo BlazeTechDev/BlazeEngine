@@ -109,60 +109,6 @@ namespace Blaze
 		}
 	}
 
-	FrameBuffer::FrameBuffer() : Buffer()
-	{
-		m_Texture = nullptr;
-	}
-
-	FrameBuffer::~FrameBuffer()
-	{
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			glDeleteFramebuffers(1, &m_Id);
-		}
-	}
-
-	bool FrameBuffer::IsFrameBufferComplete()
-	{
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
-			{
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	void FrameBuffer::Create()
-	{
-		m_Texture = new FrameBufferTexture();
-		Window* window = &Application::Get().GetWindow();
-		m_Texture->Create(window->GetWidth(), window->GetHeight());
-
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			glGenFramebuffers(1, &m_Id);
-		}
-	}
-
-	void FrameBuffer::Bind() const
-	{
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			glBindBuffer(GL_FRAMEBUFFER, m_Id);
-		}
-	}
-
-	void FrameBuffer::UnBind() const
-	{
-		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
-		{
-			glBindBuffer(GL_FRAMEBUFFER, 0);
-		}
-	}
-
 	VertexArray::VertexArray()
 	{
 		m_Id = 0;
