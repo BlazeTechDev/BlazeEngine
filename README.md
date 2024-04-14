@@ -11,6 +11,9 @@ Blaze Engine is an engine designed to be as lightweight as possible with minimal
 > [!WARNING]
 > Blaze Engine currently only supports windows (sorry linux and mac) and runs on MSVC for Visual Studio 2022, other versions of Visual Studio have not been tested
 
+> [!WARNING]
+> Blaze Engine is a project made by an ammature developer as a LEARNING PROJECT. Much of this code is unoptomised and flat out messy. If you want to improve the code quality and performance of this project, don't be afraid to get a pull request going ;)
+
 # Building Blaze Engine from source
 to build the engine:
 - clone the source using:
