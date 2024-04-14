@@ -3,6 +3,7 @@
 #include "Core.hpp"
 #include "Log.hpp"
 #include "Shader.hpp"
+#include "Texture.hpp"
 
 namespace Blaze
 {
@@ -196,6 +197,11 @@ namespace Blaze
 
 		virtual void Bind() const override;
 		virtual void UnBind() const override;
+
+		FrameBufferTexture* GetTexture() const { return m_Texture; }
+
+	private:
+		FrameBufferTexture* m_Texture;
 	};
 
 	class BLAZE_API VertexArray

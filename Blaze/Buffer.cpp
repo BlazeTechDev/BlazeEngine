@@ -3,6 +3,8 @@
 
 #include "Graphics.hpp"
 #include "OpenGLImpl.hpp"
+#include "Application.hpp"
+#include "WindowsWindow.hpp"
 
 #include <glad/glad.h>
 
@@ -109,7 +111,7 @@ namespace Blaze
 
 	FrameBuffer::FrameBuffer() : Buffer()
 	{
-		
+		m_Texture = nullptr;
 	}
 
 	FrameBuffer::~FrameBuffer()
@@ -135,6 +137,10 @@ namespace Blaze
 
 	void FrameBuffer::Create()
 	{
+		m_Texture = new FrameBufferTexture();
+		Window* window = &Application::Get().GetWindow();
+		m_Texture->Create(window->GetWidth(), window->GetHeight());
+
 		if (Graphics::Get()->GetEngineGraphicsAPI() == GraphicsAPIType::OpenGL)
 		{
 			glGenFramebuffers(1, &m_Id);

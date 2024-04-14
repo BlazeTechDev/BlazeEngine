@@ -21,6 +21,7 @@
 #include "Texture.hpp"
 #include "Graphics.hpp"
 #include "Shader.hpp"
+#include "Texture.hpp"
 
 //Collection and ECS
 #include "Collection.hpp"

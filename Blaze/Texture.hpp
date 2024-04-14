@@ -9,7 +9,7 @@ namespace Blaze
 	public:
 		~Texture();
 
-		void Create(const int width, const int height);
+		virtual void Create(const int width, const int height);
 
 		void Bind();
 		void UnBind();
@@ -26,5 +26,11 @@ namespace Blaze
 		int m_Width;
 		int m_Height;
 		int m_Channels;
+	};
+
+	class BLAZE_API FrameBufferTexture : public Texture
+	{
+	public:
+		virtual void Create(const int width, const int height) override;
 	};
 }
