@@ -227,6 +227,7 @@ namespace Blaze
 	{
 	public:
 		FrameBuffer(const FrameBufferSpecifications& specs) : Buffer(), m_Specs(specs) { m_Id = 0; }
+		FrameBuffer() : Buffer(), m_Specs({0,0,1}) { m_Id = 0; }
 		~FrameBuffer();
 
 		virtual void Bind() const override;

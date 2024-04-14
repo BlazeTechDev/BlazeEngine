@@ -68,11 +68,6 @@ namespace Blaze
 
 			Tick::TickOnce(timeStep);
 
-			if (Tick::IsTickFrame())
-			{
-				BLZ_CORE_WARN("Tick: {0} Time: {1}", Tick::GetTick(), Tick::GetTickTime());
-			}
-
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate(timeStep);

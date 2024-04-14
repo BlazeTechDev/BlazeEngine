@@ -42,12 +42,12 @@ namespace Blaze
 
 		void SetVSync(bool enabled);
 
-		void SetActiveCamera(Camera* camera) { m_ActiveCamera = camera; }
-		Camera* GetActiveCamera() { return m_ActiveCamera; }
+		void SetActiveCamera(std::shared_ptr<Camera> camera) { m_ActiveCamera = camera; }
+		std::shared_ptr<Camera> GetActiveCamera() { return m_ActiveCamera; }
 
 		const GraphicsAPIType GetEngineGraphicsAPI() { return m_EngineGraphicsAPI; }
 
-		FrameBuffer* GetViewportFrameBuffer() { return m_ViewportFrameBuffer; }
+		FrameBuffer& GetViewportFrameBuffer() { return m_ViewportFrameBuffer; }
 
 		static Graphics* Get() { return s_Instance; }
 		
@@ -57,9 +57,9 @@ namespace Blaze
 
 		static Graphics* s_Instance;
 
-		FrameBuffer* m_ViewportFrameBuffer;
+		FrameBuffer m_ViewportFrameBuffer;
 
-		Camera* m_ActiveCamera;
+		std::shared_ptr<Camera> m_ActiveCamera;
 
 		std::vector<DrawCallData> m_DrawQueue;
 

@@ -76,8 +76,8 @@ namespace Blaze
 			WindowsWindow* AppWindow = (WindowsWindow*)window;
 			AppWindow->m_Window = s_Window;
 
-			m_ViewportFrameBuffer = new FrameBuffer({ AppWindow->GetWidth(), AppWindow->GetHeight(), 1});
-			m_ViewportFrameBuffer->Invalidate();
+			m_ViewportFrameBuffer = FrameBuffer({ AppWindow->GetWidth(), AppWindow->GetHeight(), 1});
+			m_ViewportFrameBuffer.Invalidate();
 
 			shader = new Shader(vertexSource, fragmentSource); 
 
@@ -113,7 +113,9 @@ namespace Blaze
 
 	void Graphics::Update()
 	{
-		m_ViewportFrameBuffer->Bind();
+		Submit({ attrib, shader });
+
+		m_ViewportFrameBuffer.Bind();
 
 		BeginScene(m_ActiveCamera->GetGraphicalData());
 
@@ -136,7 +138,7 @@ namespace Blaze
 
 		EndScene();
 
-		m_ViewportFrameBuffer->UnBind();
+		m_ViewportFrameBuffer.UnBind();
 
 		m_DrawQueue.clear();
 	}
